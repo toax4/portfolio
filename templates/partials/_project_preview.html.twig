@@ -1,0 +1,8 @@
+<div
+    class="bg-black border-2 border-black aspect-video relative overflow-hidden {{ wrapper_class|default('mb-6') }} flex items-center justify-center">
+    {% if src is defined and src %}
+        <img src="{{ src }}" alt="{{ alt|default('') }}" class="w-full h-full object-cover">
+    {% else %}
+        <span class="font-mono text-white/40 uppercase text-sm">Aperçu à venir</span>
+    {% endif %}
+</div>

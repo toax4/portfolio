@@ -1,0 +1,197 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tous mes projets | Adrien Bockelandt{% endblock %}
+{% block meta_description %}Tous les projets réalisés par Adrien Bockelandt, développeur Full Stack basé à Toulon.{% endblock %}
+{% block og_title %}Tous mes projets | Adrien Bockelandt{% endblock %}
+{% block og_description %}Tous les projets réalisés par Adrien Bockelandt, développeur Full Stack.{% endblock %}
+{% block twitter_title %}Tous mes projets | Adrien Bockelandt{% endblock %}
+{% block twitter_description %}Tous les projets réalisés par Adrien Bockelandt, développeur Full Stack.{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        .grid-sizer,
+        .gutter-sizer {
+            margin: 0;
+            padding: 0;
+            height: 0;
+            visibility: hidden;
+        }
+
+        /* Isotope only fades filtered-out items (opacity: 0), it doesn't remove them
+           from the tab/click flow — this keeps invisible cards from being clickable
+           or focusable while they're filtered out. */
+        .grid-item[aria-hidden="true"] {
+            pointer-events: none;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <section class="pt-32 pb-16 px-4 max-w-7xl mx-auto border-b-4 border-black">
+        <a href="{{ path('index') }}"
+            class="inline-flex items-center gap-2 font-mono font-bold text-sm mb-8 hover:bg-neo-yellow border-2 border-black px-3 py-1 shadow-hard-sm cursor-hover">
+            <i class="ri-arrow-left-line"></i> RETOUR À L'ACCUEIL
+        </a>
+
+        <h1 class="text-6xl md:text-9xl font-black uppercase tracking-tighter mb-4 leading-[0.85] reveal">
+            Tous mes<br>Projets
+        </h1>
+        <p class="font-mono text-black/60 mb-10 reveal">(exemple — cette liste s'agrandira au fur et à mesure de tes
+            projets)</p>
+
+        <div class="space-y-3 reveal">
+            <div class="flex gap-3 flex-wrap font-mono font-bold text-sm" data-filter-group="category">
+                <button data-filter="*"
+                    class="filter-btn active bg-neo-yellow border-2 border-black px-4 py-2 shadow-hard-sm cursor-hover">TOUS</button>
+                <button data-filter=".client-lourd"
+                    class="filter-btn bg-white border-2 border-black px-4 py-2 shadow-hard-sm cursor-hover">CLIENT
+                    LOURD</button>
+                <button data-filter=".client-leger"
+                    class="filter-btn bg-white border-2 border-black px-4 py-2 shadow-hard-sm cursor-hover">CLIENT
+                    LÉGER</button>
+                <button data-filter=".saas"
+                    class="filter-btn bg-white border-2 border-black px-4 py-2 shadow-hard-sm cursor-hover">SAAS</button>
+                <button data-filter=".app-mobile"
+                    class="filter-btn bg-white border-2 border-black px-4 py-2 shadow-hard-sm cursor-hover">APP
+                    MOBILE</button>
+                <button data-filter=".script"
+                    class="filter-btn bg-white border-2 border-black px-4 py-2 shadow-hard-sm cursor-hover">SCRIPT</button>
+            </div>
+
+            <div class="flex gap-3 flex-wrap font-mono font-bold text-sm" data-filter-group="tech">
+                <button data-filter="*"
+                    class="filter-btn active bg-neo-yellow border-2 border-black px-3 py-1.5 shadow-hard-sm cursor-hover text-xs">TOUTES
+                    TECHNOS</button>
+                <button data-filter=".tech-php"
+                    class="filter-btn bg-white border-2 border-black px-3 py-1.5 shadow-hard-sm cursor-hover text-xs">PHP</button>
+                <button data-filter=".tech-symfony"
+                    class="filter-btn bg-white border-2 border-black px-3 py-1.5 shadow-hard-sm cursor-hover text-xs">SYMFONY</button>
+                <button data-filter=".tech-laravel"
+                    class="filter-btn bg-white border-2 border-black px-3 py-1.5 shadow-hard-sm cursor-hover text-xs">LARAVEL</button>
+                <button data-filter=".tech-node"
+                    class="filter-btn bg-white border-2 border-black px-3 py-1.5 shadow-hard-sm cursor-hover text-xs">NODE.JS</button>
+                <button data-filter=".tech-flutter"
+                    class="filter-btn bg-white border-2 border-black px-3 py-1.5 shadow-hard-sm cursor-hover text-xs">FLUTTER</button>
+                <button data-filter=".tech-bootstrap"
+                    class="filter-btn bg-white border-2 border-black px-3 py-1.5 shadow-hard-sm cursor-hover text-xs">BOOTSTRAP</button>
+                <button data-filter=".tech-mysql"
+                    class="filter-btn bg-white border-2 border-black px-3 py-1.5 shadow-hard-sm cursor-hover text-xs">MYSQL</button>
+                <button data-filter=".tech-mongodb"
+                    class="filter-btn bg-white border-2 border-black px-3 py-1.5 shadow-hard-sm cursor-hover text-xs">MONGODB</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-neo-yellow border-b-4 border-black px-4 overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            <div class="relative" id="projects-grid">
+                <div class="grid-sizer w-full md:w-[47%]"></div>
+                <div class="gutter-sizer w-full md:w-[6%]"></div>
+
+                {% include 'partials/_project_card.html.twig' with {
+                    title: 'Gestion de Stock',
+                    description: 'Application de gestion de stock avec suivi des mouvements et tableau de bord d\'administration.',
+                    tags: ['Symfony', 'PHP', 'MySQL'],
+                    tech: ['symfony', 'php', 'mysql'],
+                    href: path('project_show'),
+                    hover_class: 'group-hover:text-neo-purple',
+                    category: 'client-lourd',
+                    category_label: 'Client lourd',
+                } %}
+
+                {% include 'partials/_project_card.html.twig' with {
+                    title: 'App Mobile Suivi',
+                    description: 'Application mobile de suivi d\'activité avec synchronisation temps réel et API dédiée.',
+                    tags: ['Flutter', 'Node.js', 'MongoDB'],
+                    tech: ['flutter', 'node', 'mongodb'],
+                    href: '#',
+                    hover_class: 'group-hover:text-neo-blue',
+                    category: 'app-mobile',
+                    category_label: 'App mobile',
+                } %}
+
+                {% include 'partials/_project_card.html.twig' with {
+                    title: 'Site Vitrine',
+                    description: 'Site vitrine responsive avec back-office de gestion de contenu pour un client.',
+                    tags: ['Laravel', 'Bootstrap'],
+                    tech: ['laravel', 'bootstrap'],
+                    href: '#',
+                    hover_class: 'group-hover:text-neo-pink',
+                    category: 'client-leger',
+                    category_label: 'Client léger',
+                } %}
+            </div>
+
+            <div class="text-center mt-24">
+                <a href="#"
+                    class="inline-block bg-neo-black text-white px-12 py-5 font-bold font-mono text-xl hover:bg-neo-white hover:text-black border-4 border-black transition-all shadow-hard hover:shadow-none cursor-hover">
+                    VOIR TOUS LES DÉPÔTS SUR GITHUB
+                </a>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block extra_scripts %}
+    <script src="/js/isotope.min.js" defer></script>
+    <script defer>
+        document.addEventListener('DOMContentLoaded', function () {
+            var grid = document.getElementById('projects-grid');
+            if (!grid || typeof Isotope === 'undefined') {
+                return;
+            }
+
+            var iso = new Isotope(grid, {
+                itemSelector: '.grid-item',
+                layoutMode: 'masonry',
+                percentPosition: true,
+                masonry: {
+                    columnWidth: '.grid-sizer',
+                    gutter: '.gutter-sizer',
+                },
+            });
+
+            // Two filter rows (type + techno) must both match at once. Isotope's
+            // function-based filter calls filterFn(element) — NOT filterFn.call(element) —
+            // so the element is read from the argument, not from `this`.
+            var activeFilters = { category: '*', tech: '*' };
+
+            function itemMatchesFilters(element) {
+                var matchesCategory = activeFilters.category === '*' || element.matches(activeFilters.category);
+                var matchesTech = activeFilters.tech === '*' || element.matches(activeFilters.tech);
+                return matchesCategory && matchesTech;
+            }
+
+            // Isotope only fades filtered-out items, it doesn't detach them from the
+            // page — mark them aria-hidden and untabbable so they're not clickable
+            // or reachable by keyboard/screen readers while invisible.
+            function syncFilteredState() {
+                grid.querySelectorAll('.grid-item').forEach(function (item) {
+                    var link = item.querySelector('a');
+                    if (itemMatchesFilters(item)) {
+                        item.removeAttribute('aria-hidden');
+                        if (link) link.removeAttribute('tabindex');
+                    } else {
+                        item.setAttribute('aria-hidden', 'true');
+                        if (link) link.setAttribute('tabindex', '-1');
+                    }
+                });
+            }
+
+            document.querySelectorAll('[data-filter-group]').forEach(function (row) {
+                var groupName = row.getAttribute('data-filter-group');
+                var buttons = row.querySelectorAll('.filter-btn');
+                buttons.forEach(function (button) {
+                    button.addEventListener('click', function () {
+                        buttons.forEach(function (b) { b.classList.remove('bg-neo-yellow'); b.classList.add('bg-white'); });
+                        button.classList.remove('bg-white');
+                        button.classList.add('bg-neo-yellow');
+                        activeFilters[groupName] = button.getAttribute('data-filter');
+                        iso.arrange({ filter: itemMatchesFilters });
+                        syncFilteredState();
+                    });
+                });
+            });
+        });
+    </script>
+{% endblock %}

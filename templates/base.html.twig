@@ -1,314 +1,313 @@
 <!DOCTYPE html>
 <html lang="fr" class="scroll-smooth">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<head>
+		<meta charset="UTF-8">
+		<meta
+		name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="{% block meta_description %}Adrien Bockelandt | Développeur Full Stack basé à Toulon, spécialisé en PHP/Symfony et développement web/mobile.{% endblock %}">
-    <meta name="keywords"
-        content="Adrien Bockelandt, Développeur Full Stack, PHP, Symfony, Laravel, Flutter, Toulon, Portfolio">
-    <meta name="author" content="Adrien Bockelandt">
+		<!-- SEO Meta Tags -->
+		<meta name="description" content="{% block meta_description %}Adrien Bockelandt | Développeur Full Stack basé à Toulon, spécialisé en PHP/Symfony et développement web/mobile.{% endblock %}">
+		<meta name="keywords" content="Adrien Bockelandt, Développeur Full Stack, PHP, Symfony, Laravel, Flutter, Toulon, Portfolio">
+		<meta
+		name="author" content="Adrien Bockelandt">
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="{% block og_title %}Adrien Bockelandt | Développeur Full Stack{% endblock %}">
-    <meta property="og:description" content="{% block og_description %}Développeur Full Stack basé à Toulon, spécialisé en PHP/Symfony et développement web/mobile.{% endblock %}">
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website">
+		<meta property="og:title" content="{% block og_title %}Adrien Bockelandt | Développeur Full Stack{% endblock %}">
+		<meta
+		property="og:description" content="{% block og_description %}Développeur Full Stack basé à Toulon, spécialisé en PHP/Symfony et développement web/mobile.{% endblock %}">
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="{% block twitter_title %}Adrien Bockelandt | Développeur Full Stack{% endblock %}">
-    <meta property="twitter:description" content="{% block twitter_description %}Développeur Full Stack basé à Toulon, spécialisé en PHP/Symfony et développement web/mobile.{% endblock %}">
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image">
+		<meta property="twitter:title" content="{% block twitter_title %}Adrien Bockelandt | Développeur Full Stack{% endblock %}">
+		<meta property="twitter:description" content="{% block twitter_description %}Développeur Full Stack basé à Toulon, spécialisé en PHP/Symfony et développement web/mobile.{% endblock %}">
 
-    <title>{% block title %}Adrien Bockelandt | Développeur Full Stack{% endblock %}</title>
+		<title>
+			{% block title %}Adrien Bockelandt | Développeur Full Stack
+			{% endblock %}
+		</title>
 
-    <!-- Theme & Performance -->
-    <meta name="theme-color" content="#121212">
-    <link rel="preload"
-        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&family=Space+Grotesk:wght@800&display=swap"
-        as="style">
+		<!-- Theme & Performance -->
+		<meta name="theme-color" content="#121212">
+		<link
+		rel="preload" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&family=Space+Grotesk:wght@800&display=swap" as="style">
 
-    <!-- JSON-LD Structured Data for Search Engines -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Adrien Bockelandt",
-      "jobTitle": "Développeur Full Stack",
-      "knowsAbout": ["PHP", "Symfony", "Laravel", "Flutter", "Bootstrap", "C#", "Node.js", "MySQL", "MongoDB"],
-      "sameAs": [],
-      "description": "Développeur Full Stack basé à Toulon, spécialisé en PHP/Symfony et développement web/mobile."
-    }
-    </script>
+		<!-- JSON-LD Structured Data for Search Engines -->
+		<script type="application/ld+json">
+			{
+						      "@context": "https://schema.org",
+						      "@type": "Person",
+						      "name": "Adrien Bockelandt",
+						      "jobTitle": "Développeur Full Stack",
+						      "knowsAbout": ["PHP", "Symfony", "Laravel", "Flutter", "Bootstrap", "C#", "Node.js", "MySQL", "MongoDB"],
+						      "sameAs": [],
+						      "description": "Développeur Full Stack basé à Toulon, spécialisé en PHP/Symfony et développement web/mobile."
+						    }
+		</script>
 
-    <script src="https://cdn.tailwindcss.com"></script>
+		<script src="https://cdn.tailwindcss.com"></script>
 
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+		<link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=Space+Grotesk:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=Space+Grotesk:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'neo-yellow': '#FBFF48',
-                        'neo-pink': '#FF70A6',
-                        'neo-blue': '#3B82F6',
-                        'neo-green': '#33FF57',
-                        'neo-purple': '#A855F7',
-                        'neo-orange': '#FF9F1C',
-                        'neo-red': '#FF2A2A',
-                        'neo-white': '#FFFDF5',
-                        'neo-black': '#121212',
-                    },
-                    fontFamily: {
-                        'display': ['"Space Grotesk"', 'sans-serif'],
-                        'mono': ['"JetBrains Mono"', 'monospace'],
-                    },
-                    boxShadow: {
-                        'hard': '4px 4px 0px 0px #000',
-                        'hard-sm': '2px 2px 0px 0px #000',
-                        'hard-lg': '8px 8px 0px 0px #000',
-                        'hard-xl': '12px 12px 0px 0px #000',
-                    }
-                }
-            }
-        }
-    </script>
+		<script>
+			tailwind.config = {
+theme: {
+extend: {
+colors: {
+'neo-yellow': '#FBFF48',
+'neo-pink': '#FF70A6',
+'neo-blue': '#3B82F6',
+'neo-green': '#33FF57',
+'neo-purple': '#A855F7',
+'neo-orange': '#FF9F1C',
+'neo-red': '#FF2A2A',
+'neo-white': '#FFFDF5',
+'neo-black': '#121212'
+},
+fontFamily: {
+'display': [
+'"Space Grotesk"', 'sans-serif'
+],
+'mono': ['"JetBrains Mono"', 'monospace']
+},
+boxShadow: {
+'hard': '4px 4px 0px 0px #000',
+'hard-sm': '2px 2px 0px 0px #000',
+'hard-lg': '8px 8px 0px 0px #000',
+'hard-xl': '12px 12px 0px 0px #000'
+}
+}
+}
+}
+		</script>
 
-    <style>
-        /* Base Styles */
-        body {
-            cursor: none;
-            /* We use a custom cursor */
-            background-color: #FFFDF5;
-            background-image:
-                radial-gradient(#000 1px, transparent 1px),
-                linear-gradient(to right, #e5e5e5 1px, transparent 1px),
-                linear-gradient(to bottom, #e5e5e5 1px, transparent 1px);
-            background-size: 40px 40px, 100px 100px, 100px 100px;
-        }
+		<style>
+			/* Base Styles */
+			*,
+			*:hover {
+				cursor: none;
+			}
+			body {
+				cursor: none;
+				/* We use a custom cursor */
+				background-color: #FFFDF5;
+				background-image: radial-gradient(#000 1px, transparent 1px), linear-gradient(to right, #e5e5e5 1px, transparent 1px), linear-gradient(to bottom, #e5e5e5 1px, transparent 1px);
+				background-size: 40px 40px, 100px 100px, 100px 100px;
+			}
 
-        /* Custom Cursor */
-        #cursor {
-            pointer-events: none;
-            position: fixed;
-            z-index: 9999;
-            mix-blend-mode: difference;
-            transition: width 0.2s, height 0.2s, background-color 0.2s, transform 0.1s;
-        }
+			/* Custom Cursor */
+			#cursor {
+				pointer-events: none;
+				position: fixed;
+				z-index: 9999;
+				mix-blend-mode: difference;
+				transition: width 0.2s, height 0.2s, background-color 0.2s, transform 0.1s;
+			}
 
-        /* Animations */
-        .marquee-container {
-            overflow: hidden;
-        }
+			/* Animations */
+			.marquee-container {
+				overflow: hidden;
+			}
 
-        .marquee-content {
-            display: flex;
-            animation: scroll 40s linear infinite;
-            width: max-content;
-        }
+			.marquee-content {
+				display: flex;
+				animation: scroll 40s linear infinite;
+				width: max-content;
+			}
 
-        .marquee-container:hover .marquee-content {
-            animation-play-state: paused;
-        }
+			.marquee-container:hover .marquee-content {
+				animation-play-state: paused;
+			}
 
-        @keyframes scroll {
-            0% {
-                transform: translateX(0);
-            }
+			@keyframes scroll {
+				0% {
+					transform: translateX(0);
+				}
 
-            100% {
-                transform: translateX(-50%);
-            }
-        }
+				100% {
+					transform: translateX(-50%);
+				}
+			}
 
-        /* Reveal Animation */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-        }
+			/* Reveal Animation */
+			.reveal {
+				opacity: 0;
+				transform: translateY(40px);
+				transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+			}
 
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+			.reveal.active {
+				opacity: 1;
+				transform: translateY(0);
+			}
 
-        /* Glitch Effect on Hover */
-        .glitch-hover:hover {
-            animation: glitch-anim 0.3s cubic-bezier(.25, .46, .45, .94) both infinite;
-            color: #FF2A2A;
-        }
+			/* Glitch Effect on Hover */
+			.glitch-hover:hover {
+				animation: glitch-anim 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+				color: #FF2A2A;
+			}
 
-        @keyframes glitch-anim {
-            0% {
-                transform: translate(0)
-            }
+			@keyframes glitch-anim {
+				0% {
+					transform: translate(0)
+				}
 
-            20% {
-                transform: translate(-2px, 2px)
-            }
+				20% {
+					transform: translate(-2px, 2px)
+				}
 
-            40% {
-                transform: translate(-2px, -2px)
-            }
+				40% {
+					transform: translate(-2px, -2px)
+				}
 
-            60% {
-                transform: translate(2px, 2px)
-            }
+				60% {
+					transform: translate(2px, 2px)
+				}
 
-            80% {
-                transform: translate(2px, -2px)
-            }
+				80% {
+					transform: translate(2px, -2px)
+				}
 
-            100% {
-                transform: translate(0)
-            }
-        }
-    </style>
-    {% block stylesheets %}{% endblock %}
-</head>
+				100% {
+					transform: translate(0)
+				}
+			}
+		</style>
+		{% block stylesheets %}{% endblock %}
+	</head>
 
-<body class="text-neo-black font-display antialiased selection:bg-neo-black selection:text-neo-yellow">
-    <div id="cursor" class="w-6 h-6 bg-white rounded-full border-2 border-black hidden lg:block"></div>
+	<body class="text-neo-black font-display antialiased selection:bg-neo-black selection:text-neo-yellow">
+		<div id="cursor" class="w-6 h-6 bg-white rounded-full border-2 border-black hidden lg:block"></div>
 
-    <div class="fixed top-0 left-0 h-2 bg-neo-green z-[60] border-b-2 border-black" id="progressBar" style="width: 0%">
-    </div>
+		<div class="fixed top-0 left-0 h-2 bg-neo-green z-[60] border-b-2 border-black" id="progressBar" style="width: 0%"></div>
 
-    <nav class="fixed top-0 w-full z-50 px-4 py-4 pointer-events-none">
-        <div class="max-w-7xl mx-auto flex justify-between items-center pointer-events-auto">
-            <a href="{{ path('index') }}"
-                class="bg-neo-white border-2 border-black px-4 py-1 text-2xl font-black shadow-hard hover:bg-neo-yellow transition-all hover:translate-x-1 hover:translate-y-1 hover:shadow-none cursor-hover">
-                ADRIEN.exe
-            </a>
+		<nav class="fixed top-0 w-full z-50 px-4 py-4 pointer-events-none">
+			<div class="max-w-7xl mx-auto flex justify-between items-center pointer-events-auto">
+				<a href="{{ path('index') }}" class="bg-neo-white border-2 border-black px-4 py-1 text-2xl font-black shadow-hard hover:bg-neo-yellow transition-all hover:translate-x-1 hover:translate-y-1 hover:shadow-none cursor-hover">
+					ADRIEN.exe
+				</a>
 
-            <div class="hidden md:flex gap-4 bg-white border-2 border-black p-2 shadow-hard">
-                <a href="{{ path('index') }}#about"
-                    class="px-3 py-1 font-mono font-bold text-sm hover:bg-black hover:text-white transition-colors cursor-hover">/ABOUT</a>
-                <a href="{{ path('index') }}#skills"
-                    class="px-3 py-1 font-mono font-bold text-sm hover:bg-black hover:text-white transition-colors cursor-hover">/SKILLS</a>
-                <a href="{{ path('index') }}#experience"
-                    class="px-3 py-1 font-mono font-bold text-sm hover:bg-black hover:text-white transition-colors cursor-hover">/LOGS</a>
-                <a href="{{ path('projects_index') }}"
-                    class="px-3 py-1 font-mono font-bold text-sm hover:bg-black hover:text-white transition-colors cursor-hover">/WORK</a>
-                <a href="{{ path('index') }}#contact"
-                    class="px-3 py-1 font-mono font-bold text-sm bg-neo-yellow border border-black hover:bg-neo-pink transition-colors cursor-hover">HIRE
-                    ME</a>
-            </div>
-        </div>
-    </nav>
+				<div class="hidden md:flex gap-4 bg-white border-2 border-black p-2 shadow-hard">
+					<a href="{{ path('index') }}#about" class="px-3 py-1 font-mono font-bold text-sm hover:bg-black hover:text-white transition-colors cursor-hover">/ABOUT</a>
+					<a href="{{ path('index') }}#skills" class="px-3 py-1 font-mono font-bold text-sm hover:bg-black hover:text-white transition-colors cursor-hover">/SKILLS</a>
+					<a href="{{ path('index') }}#experience" class="px-3 py-1 font-mono font-bold text-sm hover:bg-black hover:text-white transition-colors cursor-hover">/LOGS</a>
+					<a href="{{ path('projects_index') }}" class="px-3 py-1 font-mono font-bold text-sm hover:bg-black hover:text-white transition-colors cursor-hover">/WORK</a>
+					<a href="{{ path('index') }}#contact" class="px-3 py-1 font-mono font-bold text-sm bg-neo-yellow border border-black hover:bg-neo-pink transition-colors cursor-hover">HIRE
+												                    ME</a>
+				</div>
+			</div>
+		</nav>
 
-    {% block body %}{% endblock %}
+		{% block body %}{% endblock %}
 
-    <footer class="bg-black text-white py-16 px-4 border-t-8 border-neo-green font-mono relative overflow-hidden">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 relative z-10">
-            <div class="col-span-1 md:col-span-2">
-                <h2 class="text-4xl font-black mb-6">ADRIEN.</h2>
-                <p class="text-gray-400 max-w-sm">
-                    Développeur Full Stack basé à Toulon. PHP, Symfony, Laravel, Flutter.
-                </p>
-            </div>
+		<footer class="bg-black text-white py-16 px-4 border-t-8 border-neo-green font-mono relative overflow-hidden">
+			<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 relative z-10">
+				<div class="col-span-1 md:col-span-2">
+					<h2 class="text-4xl font-black mb-6">ADRIEN.</h2>
+					<p class="text-gray-400 max-w-sm">
+						Développeur Full Stack basé à Toulon. PHP, Symfony, Laravel, Flutter.
+					</p>
+				</div>
 
-            <div>
-                <h3 class="font-bold text-neo-green mb-4 border-b border-gray-700 pb-2">SITEMAP</h3>
-                <ul class="space-y-2 text-gray-400">
-                    <li><a href="{{ path('index') }}"
-                            class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">Accueil</a>
-                    </li>
-                    <li><a href="{{ path('projects_index') }}"
-                            class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">Projets</a>
-                    </li>
-                    <li><a href="{{ path('index') }}#about"
-                            class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">À
-                            propos</a>
-                    </li>
-                    <li><a href="{{ path('index') }}#contact"
-                            class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">Contact</a>
-                    </li>
-                </ul>
-            </div>
+				<div>
+					<h3 class="font-bold text-neo-green mb-4 border-b border-gray-700 pb-2">SITEMAP</h3>
+					<ul class="space-y-2 text-gray-400">
+						<li>
+							<a href="{{ path('index') }}" class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">Accueil</a>
+						</li>
+						<li>
+							<a href="{{ path('projects_index') }}" class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">Projets</a>
+						</li>
+						<li>
+							<a href="{{ path('index') }}#about" class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">À
+																                            propos</a>
+						</li>
+						<li>
+							<a href="{{ path('index') }}#contact" class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">Contact</a>
+						</li>
+					</ul>
+				</div>
 
-            <div>
-                <h3 class="font-bold text-neo-green mb-4 border-b border-gray-700 pb-2">SOCIALS</h3>
-                <div class="flex gap-4">
-                    <a href="#" class="text-2xl hover:text-neo-yellow transition-colors cursor-hover"><i
-                            class="ri-github-fill"></i></a>
-                    <a href="#" class="text-2xl hover:text-neo-purple transition-colors cursor-hover"><i
-                            class="ri-linkedin-fill"></i></a>
-                    <a href="mailto:adrien.bock83@gmail.com"
-                        class="text-2xl hover:text-neo-blue transition-colors cursor-hover"><i
-                            class="ri-mail-fill"></i></a>
-                </div>
-            </div>
-        </div>
+				<div>
+					<h3 class="font-bold text-neo-green mb-4 border-b border-gray-700 pb-2">SOCIALS</h3>
+					<div class="flex gap-4">
+						<a href="#" class="text-2xl hover:text-neo-yellow transition-colors cursor-hover">
+							<i class="ri-github-fill"></i>
+						</a>
+						<a href="#" class="text-2xl hover:text-neo-purple transition-colors cursor-hover">
+							<i class="ri-linkedin-fill"></i>
+						</a>
+						<a href="mailto:adrien.bock83@gmail.com" class="text-2xl hover:text-neo-blue transition-colors cursor-hover">
+							<i class="ri-mail-fill"></i>
+						</a>
+					</div>
+				</div>
+			</div>
 
-        <div class="text-center mt-16 pt-8 border-t border-gray-800 text-gray-500 text-sm">
-            <p>© 2026 Adrien Bockelandt // SYSTEM_END</p>
-        </div>
+			<div class="text-center mt-16 pt-8 border-t border-gray-800 text-gray-500 text-sm">
+				<p>© 2026 Adrien Bockelandt // SYSTEM_END</p>
+			</div>
 
-        <div
-            class="absolute bottom-0 left-0 w-full text-[20vw] font-black text-white opacity-[0.03] leading-none select-none pointer-events-none text-center">
-            BRUTAL
-        </div>
-    </footer>
+			<div class="absolute bottom-0 left-0 w-full text-[20vw] font-black text-white opacity-[0.03] leading-none select-none pointer-events-none text-center">
+				BRUTAL
+			</div>
+		</footer>
 
-    <script>
-        // Custom Cursor Logic
-        const cursor = document.getElementById('cursor');
-        const hoverElements = document.querySelectorAll('.cursor-hover, a, button, input, textarea');
+		<script>
+			// Custom Cursor Logic
+const cursor = document.getElementById('cursor');
+const hoverElements = document.querySelectorAll('.cursor-hover, a, button, input, textarea');
 
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-            cursor.style.transform = `translate(-50%, -50%)`;
-        });
+document.addEventListener('mousemove', (e) => {
+cursor.style.left = e.clientX + 'px';
+cursor.style.top = e.clientY + 'px';
+cursor.style.transform = `translate(-50%, -50%)`;
+});
 
-        // Add hover effect to cursor
-        hoverElements.forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                cursor.style.width = '60px';
-                cursor.style.height = '60px';
-                cursor.style.backgroundColor = '#FBFF48'; // Neo Yellow
-                cursor.style.mixBlendMode = 'normal';
-                cursor.style.border = '2px solid black';
-            });
-            el.addEventListener('mouseleave', () => {
-                cursor.style.width = '24px';
-                cursor.style.height = '24px';
-                cursor.style.backgroundColor = '#fff';
-                cursor.style.mixBlendMode = 'difference';
-                cursor.style.border = 'none';
-            });
-        });
+// Add hover effect to cursor
+hoverElements.forEach(el => {
+el.addEventListener('mouseenter', () => {
+// cursor.style.width = '60px';
+// cursor.style.height = '60px';
+cursor.style.backgroundColor = '#FBFF48'; // Neo Yellow
+cursor.style.mixBlendMode = 'normal';
+cursor.style.border = '2px solid black';
+});
+el.addEventListener('mouseleave', () => {
+cursor.style.width = '24px';
+cursor.style.height = '24px';
+cursor.style.backgroundColor = '#fff';
+cursor.style.mixBlendMode = 'difference';
+cursor.style.border = 'none';
+});
+});
 
-        // Scroll Reveal Logic
-        const revealElements = document.querySelectorAll('.reveal');
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, { threshold: 0.1 });
+// Scroll Reveal Logic
+const revealElements = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+entry.target.classList.add('active');
+}
+});
+}, {threshold: 0.1});
 
-        revealElements.forEach(el => revealObserver.observe(el));
+revealElements.forEach(el => revealObserver.observe(el));
 
-        // Scroll Progress Bar
-        window.onscroll = function () {
-            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            let scrolled = (winScroll / height) * 100;
-            document.getElementById("progressBar").style.width = scrolled + "%";
-        };
-    </script>
-    {% block extra_scripts %}{% endblock %}
-</body>
+// Scroll Progress Bar
+window.onscroll = function () {
+let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+let scrolled = (winScroll / height) * 100;
+document.getElementById("progressBar").style.width = scrolled + "%";
+};
+		</script>
+		{% block extra_scripts %}{% endblock %}
+	</body>
 
 </html>

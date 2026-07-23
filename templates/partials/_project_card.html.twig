@@ -1,17 +1,23 @@
-<article
-    class="reveal group bg-white border-4 border-black p-4 shadow-hard{% if category is defined and category %} grid-item {{ category }} w-full md:w-[47%] mb-8{% else %} break-inside-avoid mb-12{% endif %}{% if tech is defined and tech %}{% for t in tech %} tech-{{ t }}{% endfor %}{% endif %}">
-	{% include 'partials/_project_preview.html.twig' with { src: image|default(null), alt: title } %}
+<article class="reveal group bg-white border-4 border-black p-4 shadow-hard grid-item w-full mb-8 break-inside-avoid mb-12 {% if types is defined and types %}{% for type in types %} {{ type|slugify }}{% endfor %}{% endif %} {% if technologies is defined and technologies %}{% for t in technologies %} tech-{{ t|slugify }}{% endfor %}{% endif %} {% if more_classes is defined and more_classes %}{{ more_classes }}{% endif %}">
+	{% include 'partials/_project_preview.html.twig' with { cover: cover|default(null), alt: title } %}
 	<div class="flex justify-between items-start">
 		<div>
+			<div class="flex gap-2 font-mono text-xs font-bold flex-wrap mb-2">
+				{% for type in types %}
+					<span class="bg-neo-black text-white px-2 py-1">{{ type }}</span>
+				{% endfor %}
+			</div>
 			{% if category_label is defined and category_label %}
 				<span class="inline-block bg-neo-black text-white font-mono text-[10px] font-bold uppercase px-2 py-1 mb-2">{{ category_label }}</span>
 			{% endif %}
 			<h3 class="text-4xl font-black uppercase mb-2 {{ hover_class|default('group-hover:text-neo-purple') }} transition-colors glitch-hover">
 				{{ title }}</h3>
-			<p class="font-mono text-sm mb-4 max-w-xs">{{ description }}</p>
-			<div class="flex gap-2 font-mono text-xs font-bold flex-wrap">
-				{% for tag in tags %}
-					<span class="bg-neo-black text-white px-2 py-1">{{ tag }}</span>
+			{% if description is defined and description %}
+				<p class="font-mono text-sm mb-4">{{ description }}</p>
+			{% endif %}
+			<div class="flex gap-2 font-mono text-xs font-bold flex-wrap mb-2">
+				{% for tech in technologies %}
+					<span class="bg-neo-black text-white px-2 py-1">{{ tech }}</span>
 				{% endfor %}
 			</div>
 		</div>

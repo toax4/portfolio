@@ -1,0 +1,21 @@
+version: "3"
+
+vars:
+    PHP: php
+    CONSOLE: php bin/console
+
+tasks:
+    default:
+        desc: Liste des tâches disponibles
+        cmds:
+            - task --list
+
+    serve:
+        desc: Lance le serveur Symfony
+        cmds:
+            - symfony server:start
+
+    cache-clear:
+        desc: Vide le cache Symfony
+        cmds:
+            - "{{.CONSOLE}} cache:clear"

@@ -1,155 +1,156 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Gestion de Stock | Adrien Bockelandt{% endblock %}
-{% block meta_description %}Gestion de Stock — projet de démonstration réalisé par Adrien Bockelandt avec Symfony, PHP et MySQL.{% endblock %}
-{% block og_title %}Gestion de Stock | Adrien Bockelandt{% endblock %}
-{% block og_description %}Projet de démonstration réalisé avec Symfony, PHP et MySQL.{% endblock %}
-{% block twitter_title %}Gestion de Stock | Adrien Bockelandt{% endblock %}
-{% block twitter_description %}Projet de démonstration réalisé avec Symfony, PHP et MySQL.{% endblock %}
+{% block title %}Gestion de Stock | Adrien Bockelandt
+{% endblock %}
+{% block meta_description %}Gestion de Stock — projet de démonstration réalisé par Adrien Bockelandt avec Symfony, PHP et MySQL.
+{% endblock %}
+{% block og_title %}Gestion de Stock | Adrien Bockelandt
+{% endblock %}
+{% block og_description %}Projet de démonstration réalisé avec Symfony, PHP et MySQL.
+{% endblock %}
+{% block twitter_title %}Gestion de Stock | Adrien Bockelandt
+{% endblock %}
+{% block twitter_description %}Projet de démonstration réalisé avec Symfony, PHP et MySQL.
+{% endblock %}
 
 {% block body %}
-    <section class="pt-32 pb-16 px-4 max-w-5xl mx-auto border-b-4 border-black">
-        <a href="{{ path('index') }}#projects"
-            class="inline-flex items-center gap-2 font-mono font-bold text-sm mb-8 hover:bg-neo-yellow border-2 border-black px-3 py-1 shadow-hard-sm cursor-hover">
-            <i class="ri-arrow-left-line"></i> RETOUR AU PORTFOLIO
-        </a>
+	<section class="pt-32 pb-16 px-4 max-w-5xl mx-auto border-b-4 border-black">
+		<a href="{{ path('index') }}#projects" class="inline-flex items-center gap-2 font-mono font-bold text-sm mb-8 hover:bg-neo-yellow border-2 border-black px-3 py-1 shadow-hard-sm cursor-hover">
+			<i class="ri-arrow-left-line"></i>
+			RETOUR AU PORTFOLIO
+		</a>
 
-        <div class="inline-block bg-neo-purple text-white border-2 border-black px-4 py-1 mb-6 font-mono font-bold text-sm shadow-hard rotate-[-1deg]">
-            (exemple — à remplacer par les infos du vrai projet)
-        </div>
+		<div class="inline-block bg-neo-purple text-white border-2 border-black px-4 py-1 mb-6 font-mono font-bold text-sm shadow-hard rotate-[-1deg]">
+			(exemple — à remplacer par les infos du vrai projet)
+		</div>
 
-        <h1 class="text-5xl md:text-8xl font-black uppercase tracking-tighter mb-6 leading-[0.9] reveal">
-            Gestion<br>de Stock
-        </h1>
+		<h1 class="text-5xl md:text-8xl font-black uppercase tracking-tighter mb-6 leading-[0.9] reveal">
+			{{ project.title }}
+		</h1>
 
-        <p class="font-mono text-lg md:text-xl max-w-2xl mb-8 reveal">
-            Application de gestion de stock avec suivi des mouvements, alertes de réapprovisionnement et
-            tableau de bord d'administration.
-        </p>
+		{% if project.description is defined and project.description %}
+			<p class="font-mono text-lg md:text-xl max-w-2xl mb-8 reveal">
+				{{ project.description }}
+			</p>
+		{% endif %}
 
-        <div class="reveal shadow-hard-lg mb-10">
-            {% include 'partials/_project_preview.html.twig' with { alt: 'Gestion de Stock', wrapper_class: '' } %}
-        </div>
+		<div class="reveal shadow-hard-lg mb-10">
+			{% include 'partials/_project_preview.html.twig' with { cover: project.cover, alt: 'Gestion de Stock', wrapper_class: '' } %}
+		</div>
 
-        <div class="flex flex-col md:flex-row gap-4 reveal">
-            <a href="#"
-                class="bg-black text-white border-2 border-black px-8 py-4 font-bold shadow-hard hover:bg-neo-green hover:text-black hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all cursor-hover flex items-center justify-center gap-2">
-                <i class="ri-github-fill text-xl"></i> VOIR LE CODE
-            </a>
-            <a href="#"
-                class="bg-neo-white text-black border-2 border-black px-8 py-4 font-bold shadow-hard hover:bg-neo-pink hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all cursor-hover flex items-center justify-center gap-2">
-                <i class="ri-external-link-line text-xl"></i> VOIR LA DÉMO
-            </a>
-        </div>
-    </section>
+		<div class="flex flex-col md:flex-row gap-4 reveal">
+			{% if project.href_depot %}
+				<a href="{{ project.href_depot }}" class="bg-black text-white border-2 border-black px-8 py-4 font-bold shadow-hard hover:bg-neo-green hover:text-black hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all cursor-hover flex items-center justify-center gap-2">
+					<i class="ri-github-fill text-xl"></i>
+					VOIR LE CODE
+				</a>
+			{% endif %}
+			{% if project.href_demo %}
+				<a href="{{ project.href_demo }}" class="bg-neo-white text-black border-2 border-black px-8 py-4 font-bold shadow-hard hover:bg-neo-pink hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all cursor-hover flex items-center justify-center gap-2">
+					<i class="ri-external-link-line text-xl"></i>
+					VOIR LA DÉMO
+				</a>
+			{% endif %}
+		</div>
+	</section>
 
-    <section class="py-16 px-4 max-w-5xl mx-auto">
-        <h2 class="text-4xl md:text-5xl font-black uppercase mb-6 reveal">Le projet</h2>
-        <p class="font-mono text-lg leading-relaxed text-gray-700 reveal">
-            (exemple) Contexte, objectif du projet, et mon rôle dedans. Par exemple : ce projet est né du besoin
-            d'un client de suivre ses stocks en temps réel sur plusieurs points de vente. J'ai conçu et développé
-            l'application de bout en bout, du modèle de données à l'interface d'administration.
-        </p>
-    </section>
+	<section class="py-16 px-4 max-w-5xl mx-auto">
+		<h2 class="text-4xl md:text-5xl font-black uppercase mb-6 reveal">Le projet</h2>
+		<p class="font-mono text-lg leading-relaxed text-gray-700 reveal">
+			{{ content|markdown_to_html }}
+		</p>
+	</section>
 
-    {# Désactivée pour le moment — à réactiver quand le contenu sera prêt.
-    <section class="py-16 bg-neo-black text-white border-y-4 border-black relative overflow-hidden">
-        <div class="absolute inset-0 opacity-20"
-            style="background-image: linear-gradient(#333 1px, transparent 1px), linear-gradient(90deg, #333 1px, transparent 1px); background-size: 40px 40px;">
-        </div>
-        <div class="max-w-5xl mx-auto px-4 relative z-10">
-            <h2 class="text-4xl md:text-5xl font-black uppercase mb-10 reveal">Fonctionnalités clés</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="reveal border-2 border-white/20 p-6 hover:border-neo-green transition-colors">
-                    <i class="ri-stack-line text-3xl text-neo-green mb-3 block"></i>
-                    <h3 class="font-black uppercase mb-2">Suivi des stocks</h3>
-                    <p class="font-mono text-sm text-gray-400">(exemple) Suivi en temps réel des entrées et sorties
-                        par entrepôt.</p>
-                </div>
-                <div class="reveal border-2 border-white/20 p-6 hover:border-neo-green transition-colors">
-                    <i class="ri-alarm-warning-line text-3xl text-neo-green mb-3 block"></i>
-                    <h3 class="font-black uppercase mb-2">Alertes de seuil</h3>
-                    <p class="font-mono text-sm text-gray-400">(exemple) Notification automatique en cas de stock
-                        bas.</p>
-                </div>
-                <div class="reveal border-2 border-white/20 p-6 hover:border-neo-green transition-colors">
-                    <i class="ri-bar-chart-box-line text-3xl text-neo-green mb-3 block"></i>
-                    <h3 class="font-black uppercase mb-2">Tableau de bord</h3>
-                    <p class="font-mono text-sm text-gray-400">(exemple) Statistiques et export des mouvements de
-                        stock.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    #}
+	{# Désactivée pour le moment — à réactiver quand le contenu sera prêt.
+															    <section class="py-16 bg-neo-black text-white border-y-4 border-black relative overflow-hidden">
+															        <div class="absolute inset-0 opacity-20"
+															            style="background-image: linear-gradient(#333 1px, transparent 1px), linear-gradient(90deg, #333 1px, transparent 1px); background-size: 40px 40px;">
+															        </div>
+															        <div class="max-w-5xl mx-auto px-4 relative z-10">
+															            <h2 class="text-4xl md:text-5xl font-black uppercase mb-10 reveal">Fonctionnalités clés</h2>
+															            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+															                <div class="reveal border-2 border-white/20 p-6 hover:border-neo-green transition-colors">
+															                    <i class="ri-stack-line text-3xl text-neo-green mb-3 block"></i>
+															                    <h3 class="font-black uppercase mb-2">Suivi des stocks</h3>
+															                    <p class="font-mono text-sm text-gray-400">(exemple) Suivi en temps réel des entrées et sorties
+															                        par entrepôt.</p>
+															                </div>
+															                <div class="reveal border-2 border-white/20 p-6 hover:border-neo-green transition-colors">
+															                    <i class="ri-alarm-warning-line text-3xl text-neo-green mb-3 block"></i>
+															                    <h3 class="font-black uppercase mb-2">Alertes de seuil</h3>
+															                    <p class="font-mono text-sm text-gray-400">(exemple) Notification automatique en cas de stock
+															                        bas.</p>
+															                </div>
+															                <div class="reveal border-2 border-white/20 p-6 hover:border-neo-green transition-colors">
+															                    <i class="ri-bar-chart-box-line text-3xl text-neo-green mb-3 block"></i>
+															                    <h3 class="font-black uppercase mb-2">Tableau de bord</h3>
+															                    <p class="font-mono text-sm text-gray-400">(exemple) Statistiques et export des mouvements de
+															                        stock.</p>
+															                </div>
+															            </div>
+															        </div>
+															    </section>
+															    #}
 
-    <section class="py-16 px-4 max-w-5xl mx-auto">
-        <h2 class="text-4xl md:text-5xl font-black uppercase mb-6 reveal">Stack technique</h2>
-        <div class="flex gap-3 font-mono font-bold flex-wrap reveal">
-            <span class="bg-white border-2 border-black px-4 py-2 shadow-hard-sm">PHP 8</span>
-            <span class="bg-white border-2 border-black px-4 py-2 shadow-hard-sm">Symfony</span>
-            <span class="bg-white border-2 border-black px-4 py-2 shadow-hard-sm">MySQL</span>
-            <span class="bg-white border-2 border-black px-4 py-2 shadow-hard-sm">Twig</span>
-            <span class="bg-white border-2 border-black px-4 py-2 shadow-hard-sm">Bootstrap</span>
-        </div>
-    </section>
+	<section class="py-16 px-4 max-w-5xl mx-auto">
+		<h2 class="text-4xl md:text-5xl font-black uppercase mb-6 reveal">Stack technique</h2>
+		<div class="flex gap-3 font-mono font-bold flex-wrap reveal">
+			{% for techno in project.technologies %}
+				<span class="bg-white border-2 border-black px-4 py-2 shadow-hard-sm">{{ techno }}</span>
+			{% endfor %}
+		</div>
+	</section>
 
-    <section class="py-16 px-4 max-w-5xl mx-auto border-t-4 border-black">
-        <h2 class="text-4xl md:text-5xl font-black uppercase mb-2 reveal">Compétences</h2>
-        <p class="font-mono text-sm text-gray-500 mb-8 reveal">(exemple — à adapter selon ce que ce projet t'a
-            demandé)</p>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-            <div class="reveal">
-                <h3 class="font-mono text-xs uppercase text-gray-500 mb-3 tracking-widest">Hard Skills</h3>
-                <div class="flex gap-3 font-mono font-bold flex-wrap">
-                    <span class="bg-white border-2 border-black px-4 py-2 shadow-hard-sm">Architecture logicielle</span>
-                    <span class="bg-white border-2 border-black px-4 py-2 shadow-hard-sm">Modélisation de données</span>
-                    <span class="bg-white border-2 border-black px-4 py-2 shadow-hard-sm">API REST</span>
-                </div>
-            </div>
-            <div class="reveal">
-                <h3 class="font-mono text-xs uppercase text-gray-500 mb-3 tracking-widest">Soft Skills</h3>
-                <div class="flex gap-3 font-mono font-bold flex-wrap">
-                    <span class="bg-white border-2 border-black px-4 py-2 shadow-hard-sm">Autonomie</span>
-                    <span class="bg-white border-2 border-black px-4 py-2 shadow-hard-sm">Communication client</span>
-                    <span class="bg-white border-2 border-black px-4 py-2 shadow-hard-sm">Gestion des priorités</span>
-                </div>
-            </div>
-        </div>
-    </section>
+	{# <section class="py-16 px-4 max-w-5xl mx-auto border-t-4 border-black">
+											<h2 class="text-4xl md:text-5xl font-black uppercase mb-2 reveal">Compétences</h2>
+											<p class="font-mono text-sm text-gray-500 mb-8 reveal">(exemple — à adapter selon ce que ce projet t'a
+																											            demandé)</p>
+											<div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+												<div class="reveal">
+													<h3 class="font-mono text-xs uppercase text-gray-500 mb-3 tracking-widest">Hard Skills</h3>
+													<div class="flex gap-3 font-mono font-bold flex-wrap">
+														<span class="bg-white border-2 border-black px-4 py-2 shadow-hard-sm">Architecture logicielle</span>
+														<span class="bg-white border-2 border-black px-4 py-2 shadow-hard-sm">Modélisation de données</span>
+														<span class="bg-white border-2 border-black px-4 py-2 shadow-hard-sm">API REST</span>
+													</div>
+												</div>
+												<div class="reveal">
+													<h3 class="font-mono text-xs uppercase text-gray-500 mb-3 tracking-widest">Soft Skills</h3>
+													<div class="flex gap-3 font-mono font-bold flex-wrap">
+														<span class="bg-white border-2 border-black px-4 py-2 shadow-hard-sm">Autonomie</span>
+														<span class="bg-white border-2 border-black px-4 py-2 shadow-hard-sm">Communication client</span>
+														<span class="bg-white border-2 border-black px-4 py-2 shadow-hard-sm">Gestion des priorités</span>
+													</div>
+												</div>
+											</div>
+										</section>
+	
+										<section class="py-16 bg-neo-yellow border-y-4 border-black px-4">
+											<div class="max-w-6xl mx-auto">
+												<h2 class="text-4xl md:text-5xl font-black uppercase mb-10 text-white drop-shadow-[3px_3px_0_rgba(0,0,0,1)]" style="-webkit-text-stroke: 2px black;">Aperçu</h2>
+												<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+													<div class="reveal aspect-video bg-black border-4 border-black flex items-center justify-center shadow-hard">
+														<span class="font-mono text-white/40 uppercase text-sm">Capture à venir</span>
+													</div>
+													<div class="reveal aspect-video bg-black border-4 border-black flex items-center justify-center shadow-hard">
+														<span class="font-mono text-white/40 uppercase text-sm">Capture à venir</span>
+													</div>
+													<div class="reveal aspect-video bg-black border-4 border-black flex items-center justify-center shadow-hard">
+														<span class="font-mono text-white/40 uppercase text-sm">Capture à venir</span>
+													</div>
+												</div>
+											</div>
+										</section> #}
 
-    <section class="py-16 bg-neo-yellow border-y-4 border-black px-4">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-4xl md:text-5xl font-black uppercase mb-10 text-white drop-shadow-[3px_3px_0_rgba(0,0,0,1)]"
-                style="-webkit-text-stroke: 2px black;">Aperçu</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div
-                    class="reveal aspect-video bg-black border-4 border-black flex items-center justify-center shadow-hard">
-                    <span class="font-mono text-white/40 uppercase text-sm">Capture à venir</span>
-                </div>
-                <div
-                    class="reveal aspect-video bg-black border-4 border-black flex items-center justify-center shadow-hard">
-                    <span class="font-mono text-white/40 uppercase text-sm">Capture à venir</span>
-                </div>
-                <div
-                    class="reveal aspect-video bg-black border-4 border-black flex items-center justify-center shadow-hard">
-                    <span class="font-mono text-white/40 uppercase text-sm">Capture à venir</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-24 px-4 max-w-3xl mx-auto text-center">
-        <h2 class="text-4xl font-black uppercase mb-6 reveal">Envie d'en savoir plus ?</h2>
-        <div class="flex flex-col md:flex-row justify-center gap-4 reveal">
-            <a href="{{ path('index') }}#contact"
-                class="bg-black text-white border-2 border-black px-8 py-4 font-bold shadow-hard hover:bg-neo-green hover:text-black hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all cursor-hover">
-                ME CONTACTER
-            </a>
-            <a href="{{ path('index') }}#projects"
-                class="bg-white text-black border-2 border-black px-8 py-4 font-bold shadow-hard hover:bg-neo-pink hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all cursor-hover">
-                VOIR LES AUTRES PROJETS
-            </a>
-        </div>
-    </section>
+	<section class="py-24 px-4 max-w-3xl mx-auto text-center">
+		<h2 class="text-4xl font-black uppercase mb-6 reveal">Envie d'en savoir plus ?</h2>
+		<div class="flex flex-col md:flex-row justify-center gap-4 reveal">
+			<a href="{{ path('index') }}#contact" class="bg-black text-white border-2 border-black px-8 py-4 font-bold shadow-hard hover:bg-neo-green hover:text-black hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all cursor-hover">
+				ME CONTACTER
+			</a>
+			<a href="{{ path('index') }}#projects" class="bg-white text-black border-2 border-black px-8 py-4 font-bold shadow-hard hover:bg-neo-pink hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all cursor-hover">
+				VOIR LES AUTRES PROJETS
+			</a>
+		</div>
+	</section>
 {% endblock %}

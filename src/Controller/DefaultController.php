@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Service\NotionProjectsClient;
+use App\Utils\StringUtils;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -9,21 +11,59 @@ use Symfony\Component\Routing\Attribute\Route;
 final class DefaultController extends AbstractController
 {
     #[Route('/', name: 'index', methods: ['GET'])]
-    public function index(): Response
+    public function index(NotionProjectsClient $notionProjectsClient): Response
     {
-        return $this->render('index.html.twig');
+        $featuredProjects = array_values(array_filter(
+            $notionProjectsClient->getProjects(),
+            static fn (array $project): bool => $project['show_showcase'],
+        ));
+
+        return $this->render('index.html.twig', [
+            'projects' => $featuredProjects,
+        ]);
     }
 
     #[Route('/projets', name: 'projects_index', methods: ['GET'])]
-    public function projects(): Response
+    public function projects(NotionProjectsClient $notionProjectsClient): Response
     {
-        return $this->render('projects.html.twig');
+        $projects = $notionProjectsClient->getProjects();
+
+        // Filter options are derived from the projects themselves (slug => label)
+        // so the buttons on the page always match what Notion actually contains.
+        $filterTypes = [];
+        $filterTechnologies = [];
+        foreach ($projects as $project) {
+            foreach ($project['types'] as $i => $type) {
+                $filterTypes[StringUtils::slugify($type)] = $type;
+            }
+            foreach ($project['technologies'] as $i => $techno) {
+                $filterTechnologies[StringUtils::slugify($techno)] = $techno;
+            }
+        }
+
+        ksort($filterTypes);
+        ksort($filterTechnologies);
+
+        return $this->render('projects.html.twig', [
+            'projects' => $projects,
+            'filter_types' => $filterTypes,
+            'filter_technologies' => $filterTechnologies,
+        ]);
     }
 
-    #[Route('/projets/gestion-de-stock', name: 'project_show', methods: ['GET'])]
-    public function project(): Response
+    #[Route('/projets/{pageId}', name: 'project_show', methods: ['GET'])]
+    public function project(NotionProjectsClient $notionProjectsClient, string $pageId): Response
     {
-        return $this->render('project.html.twig');
+        // dd($pageId);
+        $page = $notionProjectsClient->getPage($pageId);
+        $content = $notionProjectsClient->getPageContent($pageId);
+
+        // dd($page);
+
+        return $this->render('project.html.twig', [
+            'project' => $page,
+            'content' => $content,
+        ]);
     }
 
     #[Route('/experiences/developpeur-full-stack', name: 'experience_show', methods: ['GET'])]

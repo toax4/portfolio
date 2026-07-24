@@ -190,9 +190,11 @@ final class NotionProjectsClient
         return [
             'title' => $properties['Nom']['title'][0]['plain_text'] ?? '',
             'icon' => $icon,
+            'rate' => $properties['Pourcentage de connaissance']['number'] ?? 0,
             'color' => $properties['Couleur']['rich_text'][0]['plain_text'] ?? '',
             'type' => $properties['Type']['select']['name'] ?? '',
             'show' => $properties['En vitrine ?']['checkbox'] ?? false,
+            'position' => $properties['Position']['number'] ?? 99999999,
         ];
     }
 }

@@ -13,6 +13,12 @@ final class DefaultController extends AbstractController
     #[Route('/', name: 'index', methods: ['GET'])]
     public function index(NotionProjectsClient $notionProjectsClient): Response
     {
+        $technologies = array_values($notionProjectsClient->getTechnologies());
+
+        $technologies = array_filter($technologies, static fn (array $technology): bool => $technology['show']);
+        // Position croissant puis rate decroissant
+        usort($technologies, static fn (array $a, array $b): int => [$a['position'], $b['rate']] <=> [$b['position'], $a['rate']]);
+
         $featuredProjects = array_values(array_filter(
             $notionProjectsClient->getProjects(),
             static fn (array $project): bool => $project['show_showcase'],
@@ -20,6 +26,7 @@ final class DefaultController extends AbstractController
 
         return $this->render('index.html.twig', [
             'projects' => $featuredProjects,
+            'technologies' => $technologies,
         ]);
     }
 

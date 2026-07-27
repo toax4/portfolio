@@ -8,6 +8,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "league/commonmark": "^2.8",
+        "symfony/asset": "8.1.*",
         "symfony/console": "8.1.*",
         "symfony/dotenv": "8.1.*",
         "symfony/flex": "^2",
@@ -17,7 +18,9 @@
         "symfony/runtime": "8.1.*",
         "symfony/twig-bundle": "8.1.*",
         "symfony/yaml": "8.1.*",
+        "symfonycasts/sass-bundle": "^0.10.0",
         "twig/extra-bundle": "^3.24",
+        "twig/intl-extra": "^3.26",
         "twig/markdown-extra": "^3.28",
         "twig/twig": "^3.28"
     },
@@ -58,7 +61,8 @@
     "scripts": {
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
-            "assets:install %PUBLIC_DIR%": "symfony-cmd"
+            "assets:install %PUBLIC_DIR%": "symfony-cmd",
+            "importmap:install": "symfony-cmd"
         },
         "post-install-cmd": [
             "@auto-scripts"

@@ -22,6 +22,8 @@ final class NotionProjectsClient
         private readonly string $databaseId,
         #[Autowire(env: 'NOTION_DB_TECHNOS')]
         private readonly string $technologiesDatabaseId,
+        #[Autowire(env: 'NOTION_DB_EXPERIENCES')]
+        private readonly string $experiencesDatabaseId,
     ) {
     }
 
@@ -57,6 +59,66 @@ final class NotionProjectsClient
         $technologyNames = $this->getTechnologies();
 
         return array_map(fn (array $page): array => $this->mapPage($page, $technologyNames), $pages);
+    }
+
+    public function getExperiences(): array
+    {
+        try {
+            $response = $this->httpClient->request('POST', "https://api.notion.com/v1/databases/{$this->experiencesDatabaseId}/query", [
+                'auth_bearer' => $this->apiKey,
+                'headers' => [
+                    'Notion-Version' => self::NOTION_VERSION,
+                ],
+            ]);
+
+            $pages = $response->toArray()['results'];
+        } catch (ExceptionInterface $exception) {
+            $this->logger->error('Impossible de récupérer les projets Notion.', ['exception' => $exception]);
+
+            return [];
+        }
+
+        return array_map(fn (array $page): array => $this->mapExperience($page), $pages);
+    }
+
+    public function getExperience($pageId): array
+    {
+        try {
+            $response = $this->httpClient->request('GET', "https://api.notion.com/v1/pages/{$pageId}/", [
+                'auth_bearer' => $this->apiKey,
+                'headers' => [
+                    'Notion-Version' => self::NOTION_VERSION,
+                ],
+            ]);
+
+            $pages = $response->toArray();
+        } catch (ExceptionInterface $exception) {
+            $this->logger->error('Impossible de récupérer les projets Notion.', ['exception' => $exception]);
+
+            return [];
+        }
+
+        return $this->mapExperience($pages);
+    }
+
+    public function getExperienceContent($pageId): ?string
+    {
+        try {
+            $response = $this->httpClient->request('GET', "https://api.notion.com/v1/pages/{$pageId}/markdown", [
+                'auth_bearer' => $this->apiKey,
+                'headers' => [
+                    'Notion-Version' => self::NOTION_VERSION,
+                ],
+            ]);
+
+            $pages = $response->toArray();
+        } catch (ExceptionInterface $exception) {
+            $this->logger->error('Impossible de récupérer les projets Notion.', ['exception' => $exception]);
+
+            return null;
+        }
+
+        return $pages['markdown'] ?? null;
     }
 
     public function getTechnologies(): array
@@ -195,6 +257,41 @@ final class NotionProjectsClient
             'type' => $properties['Type']['select']['name'] ?? '',
             'show' => $properties['En vitrine ?']['checkbox'] ?? false,
             'position' => $properties['Position']['number'] ?? 99999999,
+        ];
+    }
+
+    private function mapExperience(array $page): array
+    {
+        $properties = $page['properties'];
+        // dd($properties);
+
+        $cover = null;
+        if (null != $page['cover']) {
+            $cover_type = $page['cover']['type'];
+            $cover = $page['cover'][$cover_type]['url'];
+        }
+
+        $startDate = null;
+        if (null != $properties['Date']['date']['start']) {
+            $startDate = new \DateTime($properties['Date']['date']['start']);
+        }
+
+        $endDate = null;
+        if (null != $properties['Date']['date']['end']) {
+            $endDate = new \DateTime($properties['Date']['date']['end']);
+        }
+
+        return [
+            'id' => $page['id'],
+            'title' => $properties['Nom']['title'][0]['plain_text'] ?? '',
+            'company' => $properties['Société']['formula']['string'] ?? '',
+            'cover' => $cover,
+            'color' => $properties['Couleur']['rich_text'][0]['plain_text'] ?? '',
+            'contrat_type' => $properties['Type de contrat']['rich_text'][0]['plain_text'] ?? '',
+            'location' => $properties['Ville']['rich_text'][0]['plain_text'] ?? '',
+            'website' => $properties['website']['url'] ?? null,
+            'startDate' => $startDate,
+            'endDate' => $endDate,
         ];
     }
 }

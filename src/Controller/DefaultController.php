@@ -19,14 +19,19 @@ final class DefaultController extends AbstractController
         // Position croissant puis rate decroissant
         usort($technologies, static fn (array $a, array $b): int => [$a['position'], $b['rate']] <=> [$b['position'], $a['rate']]);
 
+        $experiences = $notionProjectsClient->getExperiences();
+
         $featuredProjects = array_values(array_filter(
             $notionProjectsClient->getProjects(),
             static fn (array $project): bool => $project['show_showcase'],
         ));
 
+        // dd($experiences);
+
         return $this->render('index.html.twig', [
             'projects' => $featuredProjects,
             'technologies' => $technologies,
+            'experiences' => $experiences,
         ]);
     }
 
@@ -73,9 +78,25 @@ final class DefaultController extends AbstractController
         ]);
     }
 
-    #[Route('/experiences/developpeur-full-stack', name: 'experience_show', methods: ['GET'])]
-    public function experience(): Response
+    #[Route('/experiences/{pageId}', name: 'experience_show', methods: ['GET'])]
+    public function experience(NotionProjectsClient $notionProjectsClient, string $pageId): Response
     {
-        return $this->render('experience.html.twig');
+        // dd($pageId);
+        $page = $notionProjectsClient->getExperience($pageId);
+        $content = $notionProjectsClient->getExperienceContent($pageId);
+
+        // dd($page);
+        // dd($content);
+
+        return $this->render('experience.html.twig', [
+            'experience' => $page,
+            'content' => $content,
+        ]);
     }
+
+    // #[Route('/experiences/developpeur-full-stack', name: 'experience_show', methods: ['GET'])]
+    // public function experience(): Response
+    // {
+    //     return $this->render('experience.html.twig');
+    // }
 }

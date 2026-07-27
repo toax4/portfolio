@@ -7,6 +7,17 @@
 				background-color: {{technology.color}}
 			}
 		{% endfor %}
+
+		{% for experience in experiences %}
+			.bg-company-{{experience.company|slugify}}{
+				background-color: {{experience.color}}
+				;
+			}
+			.text-company-{{experience.company|slugify}}{
+				color: {{experience.color}}
+				;
+			}
+		{% endfor %}
 	</style>
 {% endblock %}
 
@@ -45,29 +56,46 @@
 		</div>
 	</section>
 
-	<div class="border-b-4 border-black bg-neo-blue py-3 relative z-20">
-		<div class="marquee-container font-mono font-bold text-2xl text-white">
-			<div class="marquee-content">
-				/// OUVERT AUX OPPORTUNITÉS /// DÉVELOPPEMENT FULL STACK /// PHP • SYMFONY • LARAVEL /// FLUTTER /// C# /// TOULON /// OUVERT AUX OPPORTUNITÉS /// DÉVELOPPEMENT FULL STACK /// DÉVELOPPEMENT MOBILE /// AUTODIDACTE ///
+	{% set strings = [
+        "OUVERT AUX OPPORTUNITÉS",
+        "DÉVELOPPEMENT FULL STACK",
+        "PHP • SYMFONY • LARAVEL",
+        "FLUTTER",
+        "C#",
+        "TOULON",
+        "OUVERT AUX OPPORTUNITÉS",
+        "DÉVELOPPEMENT FULL STACK",
+        "DÉVELOPPEMENT MOBILE",
+        "AUTODIDACTE",
+    ] %}
+	{% if strings %}
+		<div class="border-b-4 border-black bg-neo-blue py-3 relative z-20">
+			<div class="marquee-container font-mono font-bold text-2xl text-white">
+				<div class="marquee-content">
+					///
+					{{ strings|join(" /// ") }}
+					///
+				</div>
 			</div>
 		</div>
-	</div>
+	{% endif %}
+
 
 	<section id="about" class="py-24 px-4 max-w-7xl mx-auto">
 		<div class="grid grid-cols-1 md:grid-cols-12 gap-12">
 			<div class="md:col-span-4 reveal">
 				<div class="aspect-square bg-gray-100 border-4 border-black border-dashed relative shadow-hard overflow-hidden flex items-center justify-center">
 					<span class="font-mono font-bold text-gray-400 uppercase text-center px-4">Photo à venir</span>
-					<span class="absolute top-2 left-2 bg-neo-red text-white px-2 font-mono text-xs border border-black z-10">AVATAR.JPG</span>
+					<span class="absolute top-2 left-2 bg-neo-red text-white px-2 font-mono text-xs border border-black z-10">ME.JPG</span>
 				</div>
 			</div>
 			<div class="md:col-span-8 flex flex-col justify-center reveal">
 				<h2 class="text-6xl font-black uppercase mb-6">Qui suis-je ?</h2>
 				<p class="font-mono text-xl leading-relaxed mb-6">
 					Je suis un développeur spécialisé en développement web full-stack et applications mobiles via
-																																			                    Flutter, avec une expérience en gestion de projet et mentorat d'alternants. Passionné par la
-																																			                    création de solutions technologiques innovantes et le développement de talents, j'apporte une
-																																			                    approche collaborative et méthodique à chaque projet en donnant le meilleur de moi-même et de mes
+																																																																																																														                    Flutter, avec une expérience en gestion de projet et mentorat d'alternants. Passionné par la
+																																																																																																														                    création de solutions technologiques innovantes et le développement de talents, j'apporte une
+																																																																																																														                    approche collaborative et méthodique à chaque projet en donnant le meilleur de moi-même et de mes
 				</p>
 				<p class="font-mono text-lg mb-8 text-gray-600 border-l-4 border-neo-purple pl-4">
 					> Développeur Full Stack, PHP / Symfony / Laravel.<br>
@@ -90,6 +118,8 @@
 						<span class="bg-white border-2 border-black px-4 py-2 font-mono text-sm font-bold shadow-hard-sm hover:bg-neo-yellow transition-colors cursor-hover">💻 Dev</span>
 						<span class="bg-white border-2 border-black px-4 py-2 font-mono text-sm font-bold shadow-hard-sm hover:bg-neo-yellow transition-colors cursor-hover">⚔️ Warhammer</span>
 						<span class="bg-white border-2 border-black px-4 py-2 font-mono text-sm font-bold shadow-hard-sm hover:bg-neo-yellow transition-colors cursor-hover">🏉 Rugby</span>
+						<span class="bg-white border-2 border-black px-4 py-2 font-mono text-sm font-bold shadow-hard-sm hover:bg-neo-yellow transition-colors cursor-hover">
+							Cuisine</span>
 					</div>
 				</div>
 			</div>
@@ -99,48 +129,48 @@
 	<section class="py-24 px-4 max-w-7xl mx-auto">
 		<h2 class="text-6xl font-black uppercase mb-12 reveal">Ce que je fais</h2>
 		<div class="columns-1 md:columns-2 gap-12">
-			<div class="reveal border-4 border-black p-6 shadow-hard hover:shadow-hard-lg transition-all break-inside-avoid mb-12">
+			<div class="reveal border-4 border-black p-6 shadow-hard hover:shadow-hard-lg transition-all break-inside-avoid mb-12 bg-white">
 				<div class="w-12 h-12 bg-neo-purple border-2 border-black flex items-center justify-center mb-4">
 					<i class="ri-code-s-slash-line text-2xl text-white"></i>
 				</div>
 				<h3 class="text-2xl font-black uppercase mb-3">Développement Web</h3>
 				<p class="font-mono text-sm text-gray-700 leading-relaxed">
 					Développeur web full-stack expérimenté, je combine maîtrise de Laravel et compétences front-end
-																																			                    pour créer des sites web dynamiques, sécurisés et hautement performants. Mon expertise s'étend de
-																																			                    la conception de l'architecture à l'implémentation de fonctionnalités complexes, garantissant des
-																																			                    solutions web évolutives qui améliorent l'engagement utilisateur et optimisent les processus
-																																			                    d'affaires.
+																																																																																																														                    pour créer des sites web dynamiques, sécurisés et hautement performants. Mon expertise s'étend de
+																																																																																																														                    la conception de l'architecture à l'implémentation de fonctionnalités complexes, garantissant des
+																																																																																																														                    solutions web évolutives qui améliorent l'engagement utilisateur et optimisent les processus
+																																																																																																														                    d'affaires.
 				</p>
 			</div>
 
-			<div class="reveal border-4 border-black p-6 shadow-hard hover:shadow-hard-lg transition-all break-inside-avoid mb-12">
+			<div class="reveal border-4 border-black p-6 shadow-hard hover:shadow-hard-lg transition-all break-inside-avoid mb-12 bg-white">
 				<div class="w-12 h-12 bg-neo-pink border-2 border-black flex items-center justify-center mb-4">
 					<i class="ri-smartphone-line text-2xl text-white"></i>
 				</div>
 				<h3 class="text-2xl font-black uppercase mb-3">Développement Mobile</h3>
 				<p class="font-mono text-sm text-gray-700 leading-relaxed">
 					Spécialiste Flutter passionné, je maîtrise la création d'applications mobiles cross-platform
-																																			                    esthétiques, réactives et performantes. Grâce à une solide expérience en développement Flutter, je
-																																			                    transforme des concepts innovants en solutions mobiles fluides, offrant une expérience
-																																			                    utilisateur exceptionnelle sur iOS et Android. Mon approche agile et ma capacité à intégrer des
-																																			                    fonctionnalités avancées assurent des applications mobiles de premier plan, adaptées aux besoins
-																																			                    spécifiques de chaque projet.
+																																																																																																														                    esthétiques, réactives et performantes. Grâce à une solide expérience en développement Flutter, je
+																																																																																																														                    transforme des concepts innovants en solutions mobiles fluides, offrant une expérience
+																																																																																																														                    utilisateur exceptionnelle sur iOS et Android. Mon approche agile et ma capacité à intégrer des
+																																																																																																														                    fonctionnalités avancées assurent des applications mobiles de premier plan, adaptées aux besoins
+																																																																																																														                    spécifiques de chaque projet.
 				</p>
 			</div>
 
-			<div class="reveal border-4 border-black p-6 shadow-hard hover:shadow-hard-lg transition-all break-inside-avoid mb-12">
+			<div class="reveal border-4 border-black p-6 shadow-hard hover:shadow-hard-lg transition-all break-inside-avoid mb-12 bg-white">
 				<div class="w-12 h-12 bg-neo-blue border-2 border-black flex items-center justify-center mb-4">
 					<i class="ri-team-line text-2xl text-white"></i>
 				</div>
 				<h3 class="text-2xl font-black uppercase mb-3">Gestion De Projet</h3>
 				<p class="font-mono text-sm text-gray-700 leading-relaxed">
 					Avec une expérience en gestion de projet et mentorat, j'ai contribué efficacement à la
-																																			                    coordination et au suivi de projets technologiques, veillant à la qualité et au respect des
-																																			                    échéances. Mon engagement dans le mentorat d'alternants m'a permis de développer des compétences
-																																			                    en communication et en leadership, favorisant un environnement d'apprentissage stimulant et
-																																			                    productif. Je suis dédié à la réussite collective, combinant approche méthodique et capacité
-																																			                    d'adaptation pour surmonter les défis et encourager le développement des compétences au sein de
-																																			                    l'équipe.
+																																																																																																														                    coordination et au suivi de projets technologiques, veillant à la qualité et au respect des
+																																																																																																														                    échéances. Mon engagement dans le mentorat d'alternants m'a permis de développer des compétences
+																																																																																																														                    en communication et en leadership, favorisant un environnement d'apprentissage stimulant et
+																																																																																																														                    productif. Je suis dédié à la réussite collective, combinant approche méthodique et capacité
+																																																																																																														                    d'adaptation pour surmonter les défis et encourager le développement des compétences au sein de
+																																																																																																														                    l'équipe.
 				</p>
 			</div>
 		</div>
@@ -191,57 +221,13 @@
 		<p class="text-center font-mono text-gray-500 mb-12">(exemple — à remplacer par ton vrai parcours)</p>
 
 		<div class="relative border-l-4 border-black ml-4 md:ml-10 space-y-12">
-			<div class="reveal relative pl-8 md:pl-16">
-				<div class="absolute -left-[14px] top-2 w-6 h-6 bg-neo-yellow border-4 border-black"></div>
-				<div class="bg-white border-4 border-black p-6 shadow-hard hover:shadow-hard-xl transition-all">
-					<div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b-2 border-dashed border-gray-300 pb-4 mb-4">
-						<h3 class="text-3xl font-black uppercase">Développeur Full Stack</h3>
-						<span class="font-mono font-bold bg-neo-black text-white px-2 py-1">2024 - PRÉSENT</span>
-					</div>
-					<p class="font-mono text-xl mb-2 text-neo-yellow font-bold">@ Entreprise A</p>
-					<ul class="list-disc list-inside font-mono text-gray-700 space-y-1">
-						<li>Développement et maintenance d'applications web avec PHP / Symfony</li>
-						<li>Conception d'API REST consommées par des clients web et mobile</li>
-						<li>Collaboration avec l'équipe produit pour prioriser les fonctionnalités</li>
-					</ul>
-					<a href="{{ path('experience_show') }}" class="inline-flex items-center gap-1 mt-4 font-mono font-bold text-sm border-b-2 border-black hover:bg-neo-yellow cursor-hover">
-						VOIR LE DÉTAIL
-						<i class="ri-arrow-right-up-line"></i>
-					</a>
-				</div>
-			</div>
-
-			<div class="reveal relative pl-8 md:pl-16">
-				<div class="absolute -left-[14px] top-2 w-6 h-6 bg-neo-blue border-4 border-black"></div>
-				<div class="bg-white border-4 border-black p-6 shadow-hard hover:shadow-hard-xl transition-all">
-					<div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b-2 border-dashed border-gray-300 pb-4 mb-4">
-						<h3 class="text-3xl font-black uppercase">Alternance Développeur Web</h3>
-						<span class="font-mono font-bold bg-neo-black text-white px-2 py-1">2022 - 2024</span>
-					</div>
-					<p class="font-mono text-xl mb-2 text-neo-blue font-bold">@ Entreprise B</p>
-					<ul class="list-disc list-inside font-mono text-gray-700 space-y-1">
-						<li>Mise en place de fonctionnalités sur une application Laravel</li>
-						<li>Intégration de maquettes et amélioration de l'UI avec Bootstrap</li>
-						<li>Mise en place de tests et de la base MySQL</li>
-					</ul>
-				</div>
-			</div>
-
-			<div class="reveal relative pl-8 md:pl-16">
-				<div class="absolute -left-[14px] top-2 w-6 h-6 bg-neo-green border-4 border-black"></div>
-				<div class="bg-white border-4 border-black p-6 shadow-hard hover:shadow-hard-xl transition-all">
-					<div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b-2 border-dashed border-gray-300 pb-4 mb-4">
-						<h3 class="text-3xl font-black uppercase">Stage Développeur</h3>
-						<span class="font-mono font-bold bg-neo-black text-white px-2 py-1">2021 - 2022</span>
-					</div>
-					<p class="font-mono text-xl mb-2 text-neo-green font-bold">@ Entreprise C</p>
-					<ul class="list-disc list-inside font-mono text-gray-700 space-y-1">
-						<li>Découverte du développement Full Stack en environnement pro</li>
-						<li>Participation à la maintenance corrective d'une application interne</li>
-						<li>Montée en compétence sur Git et le travail en équipe</li>
-					</ul>
-				</div>
-			</div>
+			{% for experience in experiences %}
+				{% include 'partials/_experience_card.html.twig' with {
+                    experience: experience,
+                } %}
+			{% else %}
+				<p class="font-mono text-black/60">Aucune experience à afficher pour le moment.</p>
+			{% endfor %}
 		</div>
 	</section>
 
@@ -250,9 +236,7 @@
 			<h2 class="text-6xl md:text-9xl font-black mb-4 uppercase tracking-tighter text-white drop-shadow-[4px_4px_0_rgba(0,0,0,1)] text-stroke-black" style="-webkit-text-stroke: 3px black;">
 				Projets Phares
 			</h2>
-			<p class="font-mono text-black/70 mb-16">(exemple — sélection de projets à la une, à remplacer par tes
-																																																																																				                vrais projets)</p>
-
+			<p class="font-mono text-black/70 mb-16">(exemple — sélection de projets à la une, à remplacer par tes vrais projets)</p>
 
 			<div class="columns-1 md:columns-2 gap-12">
 				{% set hover_classes = ['group-hover:text-neo-purple', 'group-hover:text-neo-blue', 'group-hover:text-neo-pink'] %}

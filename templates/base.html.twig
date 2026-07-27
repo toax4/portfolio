@@ -36,14 +36,14 @@
 		<!-- JSON-LD Structured Data for Search Engines -->
 		<script type="application/ld+json">
 			{
-						      "@context": "https://schema.org",
-						      "@type": "Person",
-						      "name": "Adrien Bockelandt",
-						      "jobTitle": "Développeur Full Stack",
-						      "knowsAbout": ["PHP", "Symfony", "Laravel", "Flutter", "Bootstrap", "C#", "Node.js", "MySQL", "MongoDB"],
-						      "sameAs": [],
-						      "description": "Développeur Full Stack basé à Toulon, spécialisé en PHP/Symfony et développement web/mobile."
-						    }
+																		      "@context": "https://schema.org",
+																		      "@type": "Person",
+																		      "name": "Adrien Bockelandt",
+																		      "jobTitle": "Développeur Full Stack",
+																		      "knowsAbout": ["PHP", "Symfony", "Laravel", "Flutter", "Bootstrap", "C#", "Node.js", "MySQL", "MongoDB"],
+																		      "sameAs": [],
+																		      "description": "Développeur Full Stack basé à Toulon, spécialisé en PHP/Symfony et développement web/mobile."
+																		    }
 		</script>
 
 		<script src="https://cdn.tailwindcss.com"></script>
@@ -53,7 +53,7 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=Space+Grotesk:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
+		<link rel="stylesheet" href="{{ asset('styles/app.css') }}">
 		<script>
 			tailwind.config = {
 theme: {
@@ -85,99 +85,6 @@ boxShadow: {
 }
 }
 		</script>
-
-		<style>
-			/* Base Styles */
-			*,
-			*:hover {
-				cursor: none;
-			}
-			body {
-				cursor: none;
-				/* We use a custom cursor */
-				background-color: #FFFDF5;
-				background-image: radial-gradient(#000 1px, transparent 1px), linear-gradient(to right, #e5e5e5 1px, transparent 1px), linear-gradient(to bottom, #e5e5e5 1px, transparent 1px);
-				background-size: 40px 40px, 100px 100px, 100px 100px;
-			}
-
-			/* Custom Cursor */
-			#cursor {
-				pointer-events: none;
-				position: fixed;
-				z-index: 9999;
-				mix-blend-mode: difference;
-				transition: width 0.2s, height 0.2s, background-color 0.2s, transform 0.1s;
-			}
-
-			/* Animations */
-			.marquee-container {
-				overflow: hidden;
-			}
-
-			.marquee-content {
-				display: flex;
-				animation: scroll 40s linear infinite;
-				width: max-content;
-			}
-
-			.marquee-container:hover .marquee-content {
-				animation-play-state: paused;
-			}
-
-			@keyframes scroll {
-				0% {
-					transform: translateX(0);
-				}
-
-				100% {
-					transform: translateX(-50%);
-				}
-			}
-
-			/* Reveal Animation */
-			.reveal {
-				opacity: 0;
-				transform: translateY(40px);
-				transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-			}
-
-			.reveal.active {
-				opacity: 1;
-				transform: translateY(0);
-			}
-
-			/* Glitch Effect on Hover */
-			.glitch-hover:hover {
-				animation: glitch-anim 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
-				color: #FF2A2A;
-			}
-
-			@keyframes glitch-anim {
-				0% {
-					transform: translate(0)
-				}
-
-				20% {
-					transform: translate(-2px, 2px)
-				}
-
-				40% {
-					transform: translate(-2px, -2px)
-				}
-
-				60% {
-					transform: translate(2px, 2px)
-				}
-
-				80% {
-					transform: translate(2px, -2px)
-				}
-
-				100% {
-					transform: translate(0)
-				}
-			}
-		</style>
 		{% block stylesheets %}{% endblock %}
 	</head>
 

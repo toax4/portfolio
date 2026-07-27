@@ -53,6 +53,7 @@
 
 
 ###> symfony/framework-bundle ###
+/.env.*
 /.env.local
 /.env.dev
 /.env.local.php
@@ -67,3 +68,12 @@
 /.php-cs-fixer.php
 /.php-cs-fixer.cache
 ###< friendsofphp/php-cs-fixer ###
+
+###> symfony/asset-mapper ###
+/public/assets/
+/assets/vendor/
+###< symfony/asset-mapper ###
+
+###> symfonycasts/sass-bundle ###
+/public/assets/
+###< symfonycasts/sass-bundle ###

@@ -15,6 +15,11 @@ tasks:
         cmds:
             - symfony server:start
 
+    sass:
+        desc: Build les fichiers de styles
+        cmds:
+            - sass assets/styles/:assets/styles/
+
     cache-clear:
         desc: Vide le cache Symfony
         cmds:

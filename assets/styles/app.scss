@@ -115,3 +115,19 @@ body {
 .hover\:text-email:hover {
     color: #e34133;
 }
+
+.markdown-content {
+    pre {
+        margin: 25px 0;
+        padding: 25px;
+        background: #dfe6e9;
+        border-radius: 15px;
+    }
+
+    p code {
+        background: #2d3436;
+        padding: 0 10px;
+        border-radius: 5px;
+        color: red;
+    }
+}

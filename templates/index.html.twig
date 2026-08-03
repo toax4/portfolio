@@ -232,6 +232,22 @@
 		</div>
 	</section>
 
+	<section id="formations" class="py-24 px-4 max-w-7xl mx-auto">
+		<h2 class="text-5xl md:text-8xl font-black uppercase mb-4 tracking-tighter text-center">
+			Formation<span class="text-neo-red">s_Log</span>
+		</h2>
+
+		<div class="relative border-l-4 border-black ml-4 md:ml-10 space-y-12 mt-12">
+			{% for formation in formations %}
+				{% include 'partials/_formation_card.html.twig' with {
+                    formation: formation,
+                } %}
+			{% else %}
+				<p class="font-mono text-black/60">Aucune formation à afficher pour le moment.</p>
+			{% endfor %}
+		</div>
+	</section>
+
 	<section id="projects" class="py-24 bg-neo-yellow border-t-4 border-black px-4 overflow-hidden">
 		<div class="max-w-7xl mx-auto">
 			<h2 class="text-6xl md:text-9xl font-black mb-4 uppercase tracking-tighter text-white drop-shadow-[4px_4px_0_rgba(0,0,0,1)] text-stroke-black" style="-webkit-text-stroke: 3px black;">

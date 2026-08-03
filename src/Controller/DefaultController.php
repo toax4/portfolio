@@ -20,6 +20,7 @@ final class DefaultController extends AbstractController
         usort($technologies, static fn (array $a, array $b): int => [$a['position'], $b['rate']] <=> [$b['position'], $a['rate']]);
 
         $experiences = $notionProjectsClient->getExperiences();
+        $formations = $notionProjectsClient->getFormations();
 
         $featuredProjects = array_values(array_filter(
             $notionProjectsClient->getProjects(),
@@ -32,6 +33,7 @@ final class DefaultController extends AbstractController
             'projects' => $featuredProjects,
             'technologies' => $technologies,
             'experiences' => $experiences,
+            'formations' => $formations,
         ]);
     }
 

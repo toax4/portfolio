@@ -29,6 +29,8 @@ final class NotionProjectsClient
         private readonly string $skillsDatabaseId,
         #[Autowire(env: 'NOTION_DB_EXPERIENCES')]
         private readonly string $experiencesDatabaseId,
+        #[Autowire(env: 'NOTION_DB_FORMATIONS')]
+        private readonly string $formationsDatabaseId,
     ) {
     }
 
@@ -138,6 +140,35 @@ final class NotionProjectsClient
         }
 
         return $pages['markdown'] ?? null;
+    }
+
+    public function getFormations(): array
+    {
+        return $this->cache->get('notion_featured_formations', function (ItemInterface $item): array {
+            $item->expiresAfter(3600);
+
+            try {
+                $response = $this->httpClient->request('POST', "https://api.notion.com/v1/databases/{$this->formationsDatabaseId}/query", [
+                    'auth_bearer' => $this->apiKey,
+                    'headers' => [
+                        'Notion-Version' => self::NOTION_VERSION,
+                    ],
+                    'json' => [
+                        'sorts' => [
+                            ['property' => 'Date de début', 'direction' => 'descending'],
+                        ],
+                    ],
+                ]);
+
+                $pages = $response->toArray()['results'];
+
+                return array_map(fn (array $page): array => $this->mapFormation($page), $pages);
+            } catch (ExceptionInterface $exception) {
+                $this->logger->error('Impossible de récupérer les formations Notion.', ['exception' => $exception]);
+
+                return [];
+            }
+        });
     }
 
     public function getTechnologies(): array
@@ -341,6 +372,29 @@ final class NotionProjectsClient
         return [
             'title' => $properties['Nom']['title'][0]['plain_text'] ?? '',
             'icon' => $icon,
+        ];
+    }
+
+    private function mapFormation(array $page): array
+    {
+        $properties = $page['properties'];
+
+        $startDate = null;
+        if (null != ($properties['Date de début']['date']['start'] ?? null)) {
+            $startDate = new \DateTime($properties['Date de début']['date']['start']);
+        }
+
+        $endDate = null;
+        if (null != ($properties['Date de fin']['date']['start'] ?? null)) {
+            $endDate = new \DateTime($properties['Date de fin']['date']['start']);
+        }
+
+        return [
+            'id' => $page['id'],
+            'title' => $properties['Nom']['title'][0]['plain_text'] ?? '',
+            'subtitle' => $properties['Subtitle']['rich_text'][0]['plain_text'] ?? '',
+            'startDate' => $startDate,
+            'endDate' => $endDate,
         ];
     }
 

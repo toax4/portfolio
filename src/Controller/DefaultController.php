@@ -37,6 +37,31 @@ final class DefaultController extends AbstractController
         ]);
     }
 
+    #[Route('/cv', name: 'cv', methods: ['GET'])]
+    public function cv(NotionProjectsClient $notionProjectsClient): Response
+    {
+        $technologies = array_values($notionProjectsClient->getTechnologies());
+
+        $technologies = array_filter($technologies, static fn (array $technology): bool => $technology['show']);
+        // Position croissant puis rate decroissant
+        usort($technologies, static fn (array $a, array $b): int => [$a['position'], $b['rate']] <=> [$b['position'], $a['rate']]);
+
+        $experiences = $notionProjectsClient->getExperiences();
+        $formations = $notionProjectsClient->getFormations();
+
+        return $this->render('pdfs/cv.html.twig', [
+            'technologies' => $technologies,
+            'experiences' => $experiences,
+            'formations' => $formations,
+        ]);
+    }
+
+    #[Route('/lettre_motivation', name: 'cover_letter', methods: ['GET'])]
+    public function coverLetter(): Response
+    {
+        return $this->render('pdfs/lettre_motivation.html.twig');
+    }
+
     #[Route('/projets', name: 'projects_index', methods: ['GET'])]
     public function projects(NotionProjectsClient $notionProjectsClient): Response
     {

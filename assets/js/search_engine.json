@@ -1,0 +1,19 @@
+            {
+                "@context": "https://schema.org",
+                "@type": "Person",
+                "name": "Adrien Bockelandt",
+                "jobTitle": "Développeur Full Stack",
+                "knowsAbout": [
+                    "PHP",
+                    "Symfony",
+                    "Laravel",
+                    "Flutter",
+                    "Bootstrap",
+                    "C#",
+                    "Node.js",
+                    "MySQL",
+                    "MongoDB"
+                ],
+                "sameAs": [],
+                "description": "Développeur Full Stack basé à Toulon, spécialisé en PHP/Symfony et développement web/mobile."
+            }

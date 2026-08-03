@@ -10,6 +10,8 @@ body {
   background-color: #fffdf5;
   background-image: radial-gradient(#000 1px, transparent 1px), linear-gradient(to right, #e5e5e5 1px, transparent 1px), linear-gradient(to bottom, #e5e5e5 1px, transparent 1px);
   background-size: 40px 40px, 100px 100px, 100px 100px;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
 }
 
 /* Custom Cursor */
@@ -113,6 +115,36 @@ body {
   padding: 0 10px;
   border-radius: 5px;
   color: red;
+}
+
+.a4-page {
+  width: 210mm;
+  min-height: 297mm;
+  margin: 20px auto;
+  padding: 10mm;
+  background-color: #fffdf5;
+  background-image: radial-gradient(#000 1px, transparent 1px), linear-gradient(to right, #e5e5e5 1px, transparent 1px), linear-gradient(to bottom, #e5e5e5 1px, transparent 1px);
+  background-size: 40px 40px, 100px 100px, 100px 100px;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  /* padding: 40px 48px;
+  display: flex;
+  flex-direction: column; */
+}
+
+@media print {
+  .a4-page {
+    margin: 0;
+    box-shadow: none;
+    border: none !important;
+    /* padding: 0; */
+  }
+  body {
+    margin: 0;
+  }
+  footer {
+    display: none;
+  }
 }
 
 /*# sourceMappingURL=app.css.map */

@@ -1,0 +1,63 @@
+<footer class="bg-black text-white py-16 px-4 border-t-8 border-neo-green font-mono relative overflow-hidden">
+	<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 relative z-10">
+		<div class="col-span-1 md:col-span-2">
+			<h2 class="text-4xl font-black mb-6">ADRIEN.</h2>
+			<p class="text-gray-400 max-w-sm">
+				Développeur Full Stack basé à Toulon. PHP, Symfony, Laravel, Flutter, C#.
+			</p>
+		</div>
+
+		<div>
+			<h3 class="font-bold text-neo-green mb-4 border-b border-gray-700 pb-2">SITEMAP</h3>
+			<ul class="space-y-2 text-gray-400">
+				<li>
+					<a href="{{ path('index') }}" class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">Accueil</a>
+				</li>
+				<li>
+					<a href="{{ path('projects_index') }}" class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">Projets</a>
+				</li>
+				<li>
+					<a href="{{ path('index') }}#about" class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">À propos</a>
+				</li>
+				<li>
+					<a href="{{ path('index') }}#contact" class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">Contact</a>
+				</li>
+				<li>
+					<a href="{{ path('cv') }}" class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">CV</a>
+				</li>
+				<li>
+					<a href="{{ path('cover_letter') }}" class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">Lettre de motivation</a>
+				</li>
+			</ul>
+		</div>
+
+		<div>
+			<h3 class="font-bold text-neo-green mb-4 border-b border-gray-700 pb-2">SOCIALS</h3>
+			<div class="flex gap-4">
+				<a href="https://github.com/toax4" target="_blank" class="text-2xl hover:text-github transition-colors cursor-hover">
+					<i class="ri-github-fill"></i>
+				</a>
+				<a href="https://gitlab.com/toax4" target="_blank" class="text-2xl hover:text-gitlab transition-colors cursor-hover">
+					<i class="ri-gitlab-fill"></i>
+				</a>
+				<a href="https://www.linkedin.com/in/adrien-bockelandt/" target="_blank" class="text-2xl hover:text-linkedin transition-colors cursor-hover">
+					<i class="ri-linkedin-fill"></i>
+				</a>
+				<a href="https://wa.me/33651501786" class="text-2xl hover:text-whatsapp transition-colors cursor-hover">
+					<i class="ri-whatsapp-fill"></i>
+				</a>
+				<a href="mailto:adrien.bock83@gmail.com" class="text-2xl hover:text-email transition-colors cursor-hover">
+					<i class="ri-mail-fill"></i>
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="text-center mt-16 pt-8 border-t border-gray-800 text-gray-500 text-sm">
+		<p>© 2026 Adrien Bockelandt // SYSTEM_END</p>
+	</div>
+
+	<div class="absolute bottom-0 left-0 w-full text-[20vw] font-black text-white opacity-[0.03] leading-none select-none pointer-events-none text-center">
+		BRUTAL
+	</div>
+</footer>

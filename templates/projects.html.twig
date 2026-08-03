@@ -1,6 +1,6 @@
-{% extends 'base.html.twig' %}
+{% extends 'layouts/blank.html.twig' %}
 
-{% block title %}Tous mes projets | Adrien Bockelandt
+{# {% block title %}Tous mes projets | Adrien Bockelandt
 {% endblock %}
 {% block meta_description %}Tous les projets réalisés par Adrien Bockelandt, développeur Full Stack basé à Toulon.
 {% endblock %}
@@ -11,9 +11,9 @@
 {% block twitter_title %}Tous mes projets | Adrien Bockelandt
 {% endblock %}
 {% block twitter_description %}Tous les projets réalisés par Adrien Bockelandt, développeur Full Stack.
-{% endblock %}
+{% endblock %} #}
 
-{% block stylesheets %}
+{% block styles %}
 	<style>
 		.grid-sizer,
 		.gutter-sizer {
@@ -32,7 +32,7 @@
 	</style>
 {% endblock %}
 
-{% block body %}
+{% block content %}
 	<section class="pt-32 pb-16 px-4 max-w-7xl mx-auto border-b-4 border-black">
 		<a href="{{ path('index') }}" class="inline-flex items-center gap-2 font-mono font-bold text-sm mb-8 hover:bg-neo-yellow border-2 border-black px-3 py-1 shadow-hard-sm cursor-hover">
 			<i class="ri-arrow-left-line"></i>
@@ -59,13 +59,13 @@
 				<button data-filter=".tech-{{slug}}" class="filter-btn bg-white border-2 border-black px-4 py-2 shadow-hard-sm cursor-hover">{{techno}}</button>
 			{% endfor %}
 			{# <button data-filter=".tech-php" class="filter-btn bg-white border-2 border-black px-3 py-1.5 shadow-hard-sm cursor-hover text-xs">PHP</button>
-																							<button data-filter=".tech-symfony" class="filter-btn bg-white border-2 border-black px-3 py-1.5 shadow-hard-sm cursor-hover text-xs">SYMFONY</button>
-																							<button data-filter=".tech-laravel" class="filter-btn bg-white border-2 border-black px-3 py-1.5 shadow-hard-sm cursor-hover text-xs">LARAVEL</button>
-																							<button data-filter=".tech-node" class="filter-btn bg-white border-2 border-black px-3 py-1.5 shadow-hard-sm cursor-hover text-xs">NODE.JS</button>
-																							<button data-filter=".tech-flutter" class="filter-btn bg-white border-2 border-black px-3 py-1.5 shadow-hard-sm cursor-hover text-xs">FLUTTER</button>
-																							<button data-filter=".tech-bootstrap" class="filter-btn bg-white border-2 border-black px-3 py-1.5 shadow-hard-sm cursor-hover text-xs">BOOTSTRAP</button>
-																							<button data-filter=".tech-mysql" class="filter-btn bg-white border-2 border-black px-3 py-1.5 shadow-hard-sm cursor-hover text-xs">MYSQL</button>
-																							<button data-filter=".tech-mongodb" class="filter-btn bg-white border-2 border-black px-3 py-1.5 shadow-hard-sm cursor-hover text-xs">MONGODB</button> #}
+																																			<button data-filter=".tech-symfony" class="filter-btn bg-white border-2 border-black px-3 py-1.5 shadow-hard-sm cursor-hover text-xs">SYMFONY</button>
+																																			<button data-filter=".tech-laravel" class="filter-btn bg-white border-2 border-black px-3 py-1.5 shadow-hard-sm cursor-hover text-xs">LARAVEL</button>
+																																			<button data-filter=".tech-node" class="filter-btn bg-white border-2 border-black px-3 py-1.5 shadow-hard-sm cursor-hover text-xs">NODE.JS</button>
+																																			<button data-filter=".tech-flutter" class="filter-btn bg-white border-2 border-black px-3 py-1.5 shadow-hard-sm cursor-hover text-xs">FLUTTER</button>
+																																			<button data-filter=".tech-bootstrap" class="filter-btn bg-white border-2 border-black px-3 py-1.5 shadow-hard-sm cursor-hover text-xs">BOOTSTRAP</button>
+																																			<button data-filter=".tech-mysql" class="filter-btn bg-white border-2 border-black px-3 py-1.5 shadow-hard-sm cursor-hover text-xs">MYSQL</button>
+																																			<button data-filter=".tech-mongodb" class="filter-btn bg-white border-2 border-black px-3 py-1.5 shadow-hard-sm cursor-hover text-xs">MONGODB</button> #}
 		</div>
 	</div>
 </section>
@@ -95,37 +95,37 @@
 			{% endfor %}
 
 			{# {% include 'partials/_project_card.html.twig' with {
-																											                    title: 'Gestion de Stock',
-																											                    description: 'Application de gestion de stock avec suivi des mouvements et tableau de bord d\'administration.',
-																											                    types: ['Symfony', 'PHP', 'MySQL'],
-																											                    tech: ['symfony', 'php', 'mysql'],
-																											                    href: path('project_show'),
-																											                    hover_class: 'group-hover:text-neo-purple',
-																											                    category: 'client-lourd',
-																											                    category_label: 'Client lourd',
-																											                } %}
+																																							                    title: 'Gestion de Stock',
+																																							                    description: 'Application de gestion de stock avec suivi des mouvements et tableau de bord d\'administration.',
+																																							                    types: ['Symfony', 'PHP', 'MySQL'],
+																																							                    tech: ['symfony', 'php', 'mysql'],
+																																							                    href: path('project_show'),
+																																							                    hover_class: 'group-hover:text-neo-purple',
+																																							                    category: 'client-lourd',
+																																							                    category_label: 'Client lourd',
+																																							                } %}
 			
-																											                {% include 'partials/_project_card.html.twig' with {
-																											                    title: 'App Mobile Suivi',
-																											                    description: 'Application mobile de suivi d\'activité avec synchronisation temps réel et API dédiée.',
-																											                    types: ['Flutter', 'Node.js', 'MongoDB'],
-																											                    tech: ['flutter', 'node', 'mongodb'],
-																											                    href: '#',
-																											                    hover_class: 'group-hover:text-neo-blue',
-																											                    category: 'app-mobile',
-																											                    category_label: 'App mobile',
-																											                } %}
+																																							                {% include 'partials/_project_card.html.twig' with {
+																																							                    title: 'App Mobile Suivi',
+																																							                    description: 'Application mobile de suivi d\'activité avec synchronisation temps réel et API dédiée.',
+																																							                    types: ['Flutter', 'Node.js', 'MongoDB'],
+																																							                    tech: ['flutter', 'node', 'mongodb'],
+																																							                    href: '#',
+																																							                    hover_class: 'group-hover:text-neo-blue',
+																																							                    category: 'app-mobile',
+																																							                    category_label: 'App mobile',
+																																							                } %}
 			
-																															{% include 'partials/_project_card.html.twig' with {
-																											                    title: 'Site Vitrine',
-																											                    description: 'Site vitrine responsive avec back-office de gestion de contenu pour un client.',
-																											                    types: ['Laravel', 'Bootstrap'],
-																											                    tech: ['laravel', 'bootstrap'],
-																											                    href: '#',
-																											                    hover_class: 'group-hover:text-neo-pink',
-																											                    category: 'client-leger',
-																											                    category_label: 'Client léger',
-																											                } %} #}
+																																											{% include 'partials/_project_card.html.twig' with {
+																																							                    title: 'Site Vitrine',
+																																							                    description: 'Site vitrine responsive avec back-office de gestion de contenu pour un client.',
+																																							                    types: ['Laravel', 'Bootstrap'],
+																																							                    tech: ['laravel', 'bootstrap'],
+																																							                    href: '#',
+																																							                    hover_class: 'group-hover:text-neo-pink',
+																																							                    category: 'client-leger',
+																																							                    category_label: 'Client léger',
+																																							                } %} #}
 		</div>
 
 		<div class="text-center mt-24">

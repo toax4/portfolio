@@ -334,7 +334,10 @@ final class NotionProjectsClient
             'show_showcase' => $properties['Projet phare ?']['checkbox'] ?? false,
             'href_depot' => $properties['Lien dépot']['url'] ?? $properties['Lien dépot']['url'] ?? null,
             'href_demo' => $properties['Lien démo']['url'] ?? $properties['Lien démo']['url'] ?? null,
-            'content' => '',
+            'dates' => [
+                'start' => $properties['Date de réalisation']['date']['start'] ?? null,
+                'end' => $properties['Date de réalisation']['date']['end'] ?? null,
+            ],
         ];
     }
 

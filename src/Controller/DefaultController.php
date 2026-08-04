@@ -27,8 +27,6 @@ final class DefaultController extends AbstractController
             static fn (array $project): bool => $project['show_showcase'],
         ));
 
-        // dd($experiences);
-
         return $this->render('index.html.twig', [
             'projects' => $featuredProjects,
             'technologies' => $technologies,

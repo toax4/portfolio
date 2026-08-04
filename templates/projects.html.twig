@@ -1,18 +1,5 @@
 {% extends 'layouts/blank.html.twig' %}
 
-{# {% block title %}Tous mes projets | Adrien Bockelandt
-{% endblock %}
-{% block meta_description %}Tous les projets réalisés par Adrien Bockelandt, développeur Full Stack basé à Toulon.
-{% endblock %}
-{% block og_title %}Tous mes projets | Adrien Bockelandt
-{% endblock %}
-{% block og_description %}Tous les projets réalisés par Adrien Bockelandt, développeur Full Stack.
-{% endblock %}
-{% block twitter_title %}Tous mes projets | Adrien Bockelandt
-{% endblock %}
-{% block twitter_description %}Tous les projets réalisés par Adrien Bockelandt, développeur Full Stack.
-{% endblock %} #}
-
 {% block styles %}
 	<style>
 		.grid-sizer,
@@ -23,9 +10,6 @@
 			visibility: hidden;
 		}
 
-		/* Isotope only fades filtered-out items (opacity: 0), it doesn't remove them
-           from the tab/click flow — this keeps invisible cards from being clickable
-           or focusable while they're filtered out. */
 		.grid-item[aria-hidden="true"] {
 			pointer-events: none;
 		}
@@ -40,45 +24,35 @@
 		</a>
 
 		<h1 class="text-6xl md:text-9xl font-black uppercase tracking-tighter mb-4 leading-[0.85] reveal">
-			Tous mes<br>Projets
+			Tous mes projets
 		</h1>
-		{# <p class="font-mono text-black/60 mb-10 reveal">(exemple — cette liste s'agrandira au fur et à mesure de tes #}
-		projets)</p>
 
-	<div class="space-y-3 reveal">
-		<div class="flex gap-3 flex-wrap font-mono font-bold text-sm" data-filter-group="category">
-			<button data-filter="*" class="filter-btn active bg-neo-yellow border-2 border-black px-4 py-2 shadow-hard-sm cursor-hover">TOUS</button>
-			{% for slug, type in filter_types %}
-				<button data-filter=".{{slug}}" class="filter-btn bg-white border-2 border-black px-4 py-2 shadow-hard-sm cursor-hover">{{type}}</button>
-			{% endfor %}
+		<div class="space-y-3 reveal">
+			<div class="flex gap-3 flex-wrap font-mono font-bold text-sm" data-filter-group="category">
+				<button data-filter="*" class="filter-btn active bg-neo-yellow border-2 border-black px-4 py-2 shadow-hard-sm cursor-hover">TOUS</button>
+				{% for slug, type in filter_types %}
+					<button data-filter=".{{slug}}" class="filter-btn bg-white border-2 border-black px-4 py-2 shadow-hard-sm cursor-hover">{{type}}</button>
+				{% endfor %}
+			</div>
+
+			<div class="flex gap-3 flex-wrap font-mono font-bold text-sm" data-filter-group="tech">
+				<button data-filter="*" class="filter-btn active bg-neo-yellow border-2 border-black px-3 py-1.5 shadow-hard-sm cursor-hover text-xs">TOUTES TECHNOS</button>
+				{% for slug, techno in filter_technologies %}
+					<button data-filter=".tech-{{slug}}" class="filter-btn bg-white border-2 border-black px-4 py-2 shadow-hard-sm cursor-hover">{{techno}}</button>
+				{% endfor %}
+			</div>
 		</div>
+	</section>
 
-		<div class="flex gap-3 flex-wrap font-mono font-bold text-sm" data-filter-group="tech">
-			<button data-filter="*" class="filter-btn active bg-neo-yellow border-2 border-black px-3 py-1.5 shadow-hard-sm cursor-hover text-xs">TOUTES TECHNOS</button>
-			{% for slug, techno in filter_technologies %}
-				<button data-filter=".tech-{{slug}}" class="filter-btn bg-white border-2 border-black px-4 py-2 shadow-hard-sm cursor-hover">{{techno}}</button>
-			{% endfor %}
-			{# <button data-filter=".tech-php" class="filter-btn bg-white border-2 border-black px-3 py-1.5 shadow-hard-sm cursor-hover text-xs">PHP</button>
-																																			<button data-filter=".tech-symfony" class="filter-btn bg-white border-2 border-black px-3 py-1.5 shadow-hard-sm cursor-hover text-xs">SYMFONY</button>
-																																			<button data-filter=".tech-laravel" class="filter-btn bg-white border-2 border-black px-3 py-1.5 shadow-hard-sm cursor-hover text-xs">LARAVEL</button>
-																																			<button data-filter=".tech-node" class="filter-btn bg-white border-2 border-black px-3 py-1.5 shadow-hard-sm cursor-hover text-xs">NODE.JS</button>
-																																			<button data-filter=".tech-flutter" class="filter-btn bg-white border-2 border-black px-3 py-1.5 shadow-hard-sm cursor-hover text-xs">FLUTTER</button>
-																																			<button data-filter=".tech-bootstrap" class="filter-btn bg-white border-2 border-black px-3 py-1.5 shadow-hard-sm cursor-hover text-xs">BOOTSTRAP</button>
-																																			<button data-filter=".tech-mysql" class="filter-btn bg-white border-2 border-black px-3 py-1.5 shadow-hard-sm cursor-hover text-xs">MYSQL</button>
-																																			<button data-filter=".tech-mongodb" class="filter-btn bg-white border-2 border-black px-3 py-1.5 shadow-hard-sm cursor-hover text-xs">MONGODB</button> #}
-		</div>
-	</div>
-</section>
+	<section class="py-24 bg-neo-yellow border-b-4 border-black px-4 overflow-hidden">
+		<div class="max-w-7xl mx-auto">
+			<div class="relative columns-1 md:columns-2 gap-12" id="projects-grid">
+				<div class="grid-sizer w-full md:w-[47%]"></div>
+				<div class="gutter-sizer w-full md:w-[6%]"></div>
 
-<section class="py-24 bg-neo-yellow border-b-4 border-black px-4 overflow-hidden">
-	<div class="max-w-7xl mx-auto">
-		<div class="relative columns-1 md:columns-2 gap-12" id="projects-grid">
-			<div class="grid-sizer w-full md:w-[47%]"></div>
-			<div class="gutter-sizer w-full md:w-[6%]"></div>
-
-			{% set hover_classes = ['group-hover:text-neo-purple', 'group-hover:text-neo-blue', 'group-hover:text-neo-pink'] %}
-			{% for project in projects %}
-				{% include 'partials/_project_card.html.twig' with {
+				{% set hover_classes = ['group-hover:text-neo-purple', 'group-hover:text-neo-blue', 'group-hover:text-neo-pink'] %}
+				{% for project in projects %}
+					{% include 'partials/_project_card.html.twig' with {
 						title: project.title,
 						cover: project.cover,
 						description: project.description,
@@ -90,54 +64,23 @@
 						hover_class: hover_classes[loop.index0 % hover_classes|length],
                         more_classes: "md:w-[47%]",
 					} %}
-			{% else %}
-				<p class="font-mono text-black/60">Aucun projet à afficher pour le moment.</p>
-			{% endfor %}
+				{% else %}
+					<p class="font-mono text-black/60">Aucun projet à afficher pour le moment.</p>
+				{% endfor %}
+			</div>
 
-			{# {% include 'partials/_project_card.html.twig' with {
-																																							                    title: 'Gestion de Stock',
-																																							                    description: 'Application de gestion de stock avec suivi des mouvements et tableau de bord d\'administration.',
-																																							                    types: ['Symfony', 'PHP', 'MySQL'],
-																																							                    tech: ['symfony', 'php', 'mysql'],
-																																							                    href: path('project_show'),
-																																							                    hover_class: 'group-hover:text-neo-purple',
-																																							                    category: 'client-lourd',
-																																							                    category_label: 'Client lourd',
-																																							                } %}
-			
-																																							                {% include 'partials/_project_card.html.twig' with {
-																																							                    title: 'App Mobile Suivi',
-																																							                    description: 'Application mobile de suivi d\'activité avec synchronisation temps réel et API dédiée.',
-																																							                    types: ['Flutter', 'Node.js', 'MongoDB'],
-																																							                    tech: ['flutter', 'node', 'mongodb'],
-																																							                    href: '#',
-																																							                    hover_class: 'group-hover:text-neo-blue',
-																																							                    category: 'app-mobile',
-																																							                    category_label: 'App mobile',
-																																							                } %}
-			
-																																											{% include 'partials/_project_card.html.twig' with {
-																																							                    title: 'Site Vitrine',
-																																							                    description: 'Site vitrine responsive avec back-office de gestion de contenu pour un client.',
-																																							                    types: ['Laravel', 'Bootstrap'],
-																																							                    tech: ['laravel', 'bootstrap'],
-																																							                    href: '#',
-																																							                    hover_class: 'group-hover:text-neo-pink',
-																																							                    category: 'client-leger',
-																																							                    category_label: 'Client léger',
-																																							                } %} #}
+			<div class="text-center mt-24">
+				<a href="#" class="inline-block bg-neo-black text-white px-12 py-5 font-bold font-mono text-xl hover:bg-neo-white hover:text-black border-4 border-black transition-all shadow-hard hover:shadow-none cursor-hover">
+					VOIR TOUS LES DÉPÔTS SUR GITHUB
+				</a>
+			</div>
 		</div>
-
-		<div class="text-center mt-24">
-			<a href="#" class="inline-block bg-neo-black text-white px-12 py-5 font-bold font-mono text-xl hover:bg-neo-white hover:text-black border-4 border-black transition-all shadow-hard hover:shadow-none cursor-hover">
-				VOIR TOUS LES DÉPÔTS SUR GITHUB
-			</a>
-		</div>
-	</div>
-</section>{% endblock %}{% block extra_scripts %}
-<script src="/js/isotope.min.js" defer></script>
-<script defer>
-	document.addEventListener('DOMContentLoaded', function () {
+	</section>
+{% endblock %}
+{% block scripts %}
+	<script src="/js/isotope.min.js" defer></script>
+	<script defer>
+		document.addEventListener('DOMContentLoaded', function () {
 var grid = document.getElementById('projects-grid');
 if (! grid || typeof Isotope === 'undefined') {
 return;
@@ -209,4 +152,5 @@ syncFilteredState();
 });
 });
 });
-</script>{% endblock %}
+	</script>
+{% endblock %}

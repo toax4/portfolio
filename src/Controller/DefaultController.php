@@ -47,6 +47,16 @@ final class DefaultController extends AbstractController
         $experiences = $notionProjectsClient->getExperiences();
         $formations = $notionProjectsClient->getFormations();
 
+        // dd($technologies);
+
+        foreach ($technologies as $k => $tech) {
+            if (!in_array($tech['title'], ['PHP', 'Symfony', 'Laravel', 'Flutter'])) {
+                unset($tech['color']);
+            }
+
+            $technologies[$k] = $tech;
+        }
+
         return $this->render('pdfs/cv.html.twig', [
             'technologies' => $technologies,
             'experiences' => $experiences,
